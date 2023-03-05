@@ -5,7 +5,7 @@ module.exports = () => {
         useUnifiedTopology: true,
     };
     try{
-        mongoose.connect("mongodb+srv://chadspl:chadspl@cluster0.sevp7ws.mongodb.net/?retryWrites=true&w=majority", connectionParams);
+        mongoose.connect("mongodb+srv://hasnainkabir120:nbspl2@campusworks.ommmdwm.mongodb.net/?retryWrites=true&w=majority", connectionParams);
         console.log('Connected to database')
     }catch(error){
         console.log(error);
