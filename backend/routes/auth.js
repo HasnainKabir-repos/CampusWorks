@@ -5,10 +5,11 @@ const bcrypt = require('bcrypt');
 
 router.post("/",async(req,res)=>{
     try{
-       const{error} = validate(req.body);
+        const{error} = validate(req.body);
         if(error)
-          return res.status(400).send({message:error.details[0].message});
+            return res.status(400).send({message:error.details[0].message});
 
+        const user = await User.findOne({ email: req.body.email });
         if(!user)
             return res.status(401).send({message:'Invalid email or password'});
 
@@ -24,16 +25,16 @@ router.post("/",async(req,res)=>{
 });
 
 const validate = (data) => {
-  const schema = Joi.object({
-    email: Joi.string().email().required().label('Email').custom((value, helpers) => {
-      if (!value.endsWith('@iut-dhaka.edu')) {
-        return helpers.message('Email must be a valid email address with @iut-dhaka.edu domain');
-      }
-      return value;
-    }),
-    password: Joi.string().min(6).required().label('Password')
-  });
-  return schema.validate(data);
+    const schema = Joi.object({
+        email: Joi.string().email().required().label('Email').custom((value, helpers) => {
+            if (!value.endsWith('@iut-dhaka.edu')) {
+                return helpers.message('Email must be a valid email address with @iut-dhaka.edu domain');
+            }
+            return value;
+        }),
+        password: Joi.string().min(6).required().label('Password')
+    });
+    return schema.validate(data);
 }
 
 module.exports = router;
