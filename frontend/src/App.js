@@ -1,54 +1,18 @@
-import React from "react";
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
-/** import all components */
-import Username from './components/Username';
-import Password from './components/Password';
-import Profile from './components/Profile';
-import Recovery from './components/Recovery';
-import Reset from './components/Reset';
-import PageNotFound from './components/PageNotFound';
-import Register from './components/Register';
+import{Route,Routes,Navigate} from 'react-router-dom';
+import Main from './components/Main';
+import Signup from './components/Signup';
+import Login from './components/Login';
 
 
-/** root routes */
-const router = createBrowserRouter(
-  [
-    {
-      path: '/',
-      element : <Username></Username>
-    },
-    {
-      path: '/register',
-      element : <Register></Register>
-    },
-    {
-      path: '/password',
-      element : <Password></Password>
-    },
-    {
-      path: '/profile',
-      element : <Profile></Profile>
-    },
-    {
-      path: '/recovery',
-      element : <Recovery></Recovery>
-    },
-    {
-      path: '/reset',
-      element : <Reset></Reset>
-    },
-    {
-      path: '*',
-      element : <PageNotFound></PageNotFound>
-    }
-  ]
-)
-
-export default function App(){
-  return(
-    <main>
-         <RouterProvider router={router}></RouterProvider> 
-    </main>
-  )
+function App() {
+  const user = localStorage.getItem('token');
+  return (
+    <Routes>
+      {user && <Route path="/" exact element={<Main/>}/>}
+      <Route path ="/login" exact element={<Login/>}/>
+      <Route path ="/signup" exact element={<Signup/>}/>
+      <Route path="/" exact element={<Navigate replace to="/signup"/>}/>
+    </Routes>
+  );
 }
+export default App;
