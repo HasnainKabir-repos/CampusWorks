@@ -1,31 +1,22 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
+const cors = require('cors');
+const connection = require('./database');
+const userRoutes = require('./routes/users');
+const authRoutes = require('./routes/auth');
 
-const mongoose = require('mongoose')
+//database connection
+connection();
 
-mongoose.connect(
-    "mongodb+srv://hasnainkabir120:nbspl2@campusworks.ommmdwm.mongodb.net/?retryWrites=true&w=majority"
-).then(
-    () => {
-        console.log('Database Connected')
-    }
-    
-).catch(
-    () =>
-    {
-        console.log('Connection Failed')
-    }
-    
-)
+//middlewares
+app.use(express.json());
+app.use(cors());
 
-app.get(
-    "/",
-    (req, res) => {
-        res.send("hello")
-    }
-)
+//routes
+app.use('/api/users',userRoutes);
+app.use('/api/auth',authRoutes);
 
-app.listen(
-    5000,
-    ()=> console.log("Backend is running")
-)
+
+const port = process.env.PORT || 8080;
+app.listen(port, () => console.log(`Listening on port ${port}...`));
