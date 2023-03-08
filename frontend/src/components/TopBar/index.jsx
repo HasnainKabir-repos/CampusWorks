@@ -1,5 +1,6 @@
 import campusWorks from "../../assets/campusWorks.png";
 import logout from "../../assets/logout.png";
+import Dropdown from "../Dropdown";
 const TopBar = () => {
 
 
@@ -23,7 +24,7 @@ const TopBar = () => {
                 <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
                     <ul class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-inherit md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
                     <li>
-                        <a href="/" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page">Home</a>
+                        <a href="/" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0" >Home</a>
                     </li>
                     <li>
                         <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Profile</a>
@@ -35,6 +36,7 @@ const TopBar = () => {
                         <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 ">My jobs</a>
                     </li>
                     </ul>
+                      <Dropdown />  
                 </div>
             </div>
 

@@ -1,5 +1,7 @@
 import TopBar from "../TopBar";
 import avatar from "../../assets/avatar.png";
+import job_search from "../../assets/job_search.png";
+import write from "../../assets/write.png";
 const Main = () => {
 
 	const name = "Kabir";
@@ -13,26 +15,8 @@ const Main = () => {
 
 		<div className="flex flex-col">
 
-			<div className="mt-20 p-10 flex flex-wrap items-center justify-center">
-				<div className="rounded-xl  bg-gradient-to-r from-green-500 to-cyan-500 h-80">
-
-					<div className="my-20 mx-40 flex items-center justify-center">
-						<div className="flex flex-col items-center justify-center">
-							<div className="flex items-center justify-center">
-								<h1 className="font-serif text-white text-7xl font-bold">Good to see you!</h1>
-							</div>
-							<div className="my-10 flex items-center justify-center">
-								<h1 className="font-serif text-white text-6xl font-bold">{name}</h1>
-							</div>
-						</div>
-						
-					</div>
-				</div>
-				
-			</div>
-
-			<div className="flex flex-row items-center justify-center flex-wrap py-1">
-				<div className="flex-1 h-64 m-2 py-1">
+			<div className="flex flex-row items-center justify-center flex-wrap py-1 mt-20">
+				<div className="flex-1 m-2 py-1">
 				<div class="rounded-xl bg-white shadow-lg ">
 
 					<div class="flex flex-wrap w-full px-3 pt-3 bg-emerald-500">
@@ -82,43 +66,79 @@ const Main = () => {
 								</div>
 							</div>
 
+							<div class="flex flex-row">
+								<div className="flex-auto pl-5">
+									<h1 class="font-medium">Description:</h1>
+								</div>
+								<div className="flex-auto pl-6">
+									<h1 className="font-normal">something</h1>
+								</div>
+							</div>
+
 
 						</div>
 					</div>
 				</div>
 				</div>
 
-				<div className="flex-auto h-64 m-2">
-				<div class="rounded-lg bg-white p-6 shadow-lg bg-emerald-100">
-					<h2 class="mb-4 text-lg font-medium">Job Search</h2>
-					<div class="mb-4 flex">
-						<input type="text" placeholder="Search Jobs" class="w-full rounded-l-md border border-gray-400 px-4 py-2 focus:border-green-600 focus:outline-none focus:ring" />
-						<button class="rounded-r-md bg-emerald-500 px-4 py-2 text-white hover:bg-teal-700 focus:border-green-600 focus:outline-none focus:ring">Search</button>
-					</div>
-					<p class="text-gray-700">Enter a keyword or a job title to find relevant jobs.</p>
+				<div className="flex-auto m-2 ">
+					<div class="rounded-lg bg-white p-6 shadow-lg bg-emerald-100 ">
+					
+
+						<div class = "pb-3">
+							<img src={job_search} height = "50" width = "50"alt="" />
+						</div>
+
+						<h2 class="mb-4 text-lg font-medium">Job Search</h2>
+							<div class="mb-4 flex">
+								<input type="text" placeholder="Search Jobs" class="w-full rounded-l-md border border-gray-400 px-4 py-2 focus:border-green-600 focus:outline-none focus:ring" />
+								<button class="rounded-r-md bg-emerald-500 px-4 py-2 text-white hover:bg-teal-700 focus:border-green-600 focus:outline-none focus:ring">Search</button>
+							</div>
+						<p class="flex text-gray-700 items-center justify-center py-5">Enter a keyword or a job title to find relevant jobs.</p>
+						
 					</div>
 
+					<div class="rounded-lg bg-white p-6 shadow-lg bg-emerald-100 mt-5">
+						<div class = "pb-3">
+							<img src={write} height = "50" width = "50"alt="" />
+						</div>
+
+						<h2 class="mb-4 text-lg font-medium">Post a new work</h2>
+							<div class="mb-4 flex items-center justify-center">
+								<button class="rounded-md bg-emerald-500 px-4 py-2 text-white hover:bg-teal-700 focus:border-green-600 focus:outline-none focus:ring">Click here to post a new work</button>
+							</div>
+					</div>
 				</div>
 
-				<div className="flex-1 h-64 m-2">
+				<div className="flex-1 m-2 mx-3">
 
 					<div class= "rounded-xl bg-white shadow-lg">
 						<div class="flex flex-wrap w-full px-3 pt-3 bg-emerald-500">
 							<h2 class="mb-4 text-lg font-medium text-white">Inbox</h2>
 						</div>
 
-
-						
+						<div class = "flex flex-wrap px-20 py-20">
+							inbox will be added here
+						</div>
 					</div>
 
 				</div>
+
 			</div>
+
 		</div>
 
-      
-
-
+		<footer className="bg-gray-800 text-gray-400 py-4 absolute bottom-0 w-full">
+		<div className="container mx-auto px-4">
+			
+			<h1 className="text-center">CampusWorks</h1>
+			<p className="text-center">
+			All rights reserved
+			</p>
+		</div>
+		</footer>
     </div>
+	
 
 		
 	);
