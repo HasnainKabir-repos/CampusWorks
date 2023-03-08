@@ -43,7 +43,7 @@ const Signup = () => {
 				<div className={styles.left}>
 					<h1>Welcome to CampusWorks</h1>
 					<Link to="/login">
-						<button type="button" className={styles.white_btn}>
+						<button type="button" className={"border-none outline-none py-3 px-4 bg-white hover:shadow-xl hover:shadow-black-100 text-black rounded-md w-48 font-medium text-base cursor-pointer font-poppins shadow-md my-4"}>
 							Sign In
 						</button>
 					</Link>
@@ -117,7 +117,7 @@ const Signup = () => {
                         </select>
 
 						{error && <div className={styles.error_msg}>{error}</div>}
-						<button type="submit" className={styles.green_btn}>
+						<button type="submit" className={"border-none outline-none py-3 px-4 hover:shadow-xl hover:shadow-black-100 bg-green-500 text-white rounded-md w-48 font-medium text-base cursor-pointer font-poppins shadow-md my-4"}>
 							Sign Up
 						</button>
 					</form>

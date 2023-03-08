@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 
+
 const Login = () => {
 	const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
@@ -54,7 +55,7 @@ const Login = () => {
 							className={styles.input}
 						/>
 						{error && <div className={styles.error_msg}>{error}</div>}
-						<button type="submit" className={styles.green_btn}>
+						<button type="submit" className={"border-none outline-none py-3 px-4 bg-green-500 hover:shadow-xl hover:shadow-black-100 text-white rounded-md w-48 font-medium text-base cursor-pointer font-poppins shadow-md my-4"}>
 							Sign In
 						</button>
 					</form>
@@ -62,7 +63,9 @@ const Login = () => {
 				<div className={styles.right}>
 					<h1>New to CampusWorks ?</h1>
 					<Link to="/signup">
-						<button type="button" className={styles.white_btn}>
+						
+						{/* Had to convert the style to tailwind */}
+						<button type="button" className={"border-none outline-none py-3 px-4 hover:shadow-xl hover:shadow-black-100 bg-white text-black rounded-md w-48 font-medium text-base cursor-pointer font-poppins shadow-md my-4"}>
 							Sign Up
 						</button>
 					</Link>

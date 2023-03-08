@@ -1,109 +1,60 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { Link } from "react-scroll";
-import styles from "./styles.TopBar.css";
+import campusWorks from "../../assets/campusWorks.png";
+import logout from "../../assets/logout.png";
+const TopBar = () => {
 
-export default function TopBar(){
 
-    const handleLogout = () => {
-		localStorage.removeItem("token");
-		window.location.reload();
-	};
-
-    const [y, setY] = useState(window.scrollY);
-    
-    useEffect(()=>{
-        window.addEventListener("scroll", () => setY(window.scrollY));
-
-        return () => {
-            window.removeEventListener("scroll", () => setY(window.scrollY));
+        const handleLogout = () => {
+            localStorage.removeItem("token");
+            window.location.reload();
         };
-    }, [y]);
-
-
-    return (
-        <>
-        <Wrapper className="flexCenter animate whiteBg" style={ y > 100 ? { height :"60px"} : {height : "80px"}}>
-        <NavInner  className="container flexSpaceCenter">
-
-            <Link className="container flexnullCenter" to="home" smooth={true}>
-                {/* logo */}
-
-                <h1 style = {{marginLeft: "15px"}} className="font20 extraBold">
-                    CampusWorks
-                </h1>
-            </Link>
-
-            <UlWrapper className="flexNullCenter">
-                <li className="semiBold font15 pointer">
-                    <Link className="active" style={{padding :"10px 15px"}} to="home" spy={true} smooth={true} offset={-80}>
-                        Home
-                    </Link>
-                    
-                </li>
-                <li className="semiBold font15 pointer">
-                    <Link className="active" style={{padding :"10px 15px"}}  spy={true} smooth={true} offset={-80}>
-                        Profile
-                    </Link>
-                </li>
-
-                <li className="semiBold font15 pointer">
-                    <Link className="active" style={{padding :"10px 15px"}} spy={true} smooth={true} offset={-80}>
-                        Inbox
-                    </Link>
-                </li>
-
-                <li className="semiBold font15 pointer">
-                    <Link className="active" style={{padding :"10px 15px"}} spy={true} smooth={true} offset={-80}>
-                        Contracts
-                    </Link>
-                </li>
-
-            </UlWrapper>
-            
-            <UlWrapperRight className="flexNullCenter">
-            <li className="semiBold font15 pointer">
-                <Button style={{ padding: "10px 30px 10px 0" }} onClick={handleLogout}>
-                    Logout
-                </Button>
-                </li>
-            </UlWrapperRight>
-        </NavInner>
-
-    </Wrapper>
+	return (
         
-    </>
-    )
-}
+            <nav class="bg-white flex flex-row max-h-40 px-2 shadow-lg sm:px-4 py-2.5 0 fixed w-full z-20 top-0 left-0 right-0 border-b border-gray-200">
+            
+            <div class = "container flex flex-row w-full">
+            <div class = "flex align-items-center">
+                        <a href="/" class="flex items-center">
+                        <img src={campusWorks} class="" width="200" height="100" alt="Logo"/>
+                        </a>
+            </div>
+                <div class="container flex flex-wrap items-center justify-center">
+            
+                
+                <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                    <ul class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-inherit md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
+                    <li>
+                        <a href="/" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page">Home</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Profile</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 ">Inbox</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 ">My jobs</a>
+                    </li>
+                    </ul>
+                </div>
+            </div>
 
-const Wrapper = styled.nav`
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-`;
-const NavInner = styled.div`
-  position: relative;
-  height: 100%;
-`;
 
-const UlWrapper = styled.ul`
-  display: flex;
-  @media (max-width: 760px) {
-    display: none;
-  }
-`;
-const UlWrapperRight = styled.ul`
-  @media (max-width: 760px) {
-    display: none;
-  }
-`;
-const Button = styled.button`
-  background: transparent;
-  border-radius: 3px;
-  border: 2px solid palevioletred;
-  color: palevioletred;
-  margin: 0 1em;
-  padding: 0.25em 1em;
-`;
+            <div class="flex align-items-center p-2">
+                
+            <button onClick= {handleLogout} class="relative inline-flex items-center justify-center px-10  overflow-hidden text-sm  transition duration-300 ease-out border-2 border-green-500 rounded-3xl shadow-md group">
+        <span class="absolute inset-0 flex items-center justify-center w-full h-15 text-white duration-300 -translate-x-full bg-green-500 group-hover:translate-x-0 ease">
+        <img class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" src={logout}></img>
+        </span>
+        <span class="absolute flex items-center justify-center w-full h-15 text-grey-700 transition-all duration-300 transform group-hover:translate-x-full ease">Log Out</span>
+        <span class="relative invisible">Log out</span>
+        </button>
+                    
+                </div>  
+            </div>
+            
+            </nav>
+
+	);
+};
+
+export default TopBar;
