@@ -1,4 +1,5 @@
 import TopBar from "../TopBar";
+import Footer from "../Footer";
 import avatar from "../../assets/avatar.png";
 import job_search from "../../assets/job_search.png";
 import write from "../../assets/write.png";
@@ -7,15 +8,34 @@ const Main = () => {
 	const name = "Kabir";
 
 	return (
-		
-		<div className="bg-gray-100 h-screen w-screen ">
+		<div className="bg-gray-100 h-full w-full ">
       <div className="fixed w-full z-10 top-0">
         <TopBar />
       </div>
 
 		<div className="flex flex-col">
 
-			<div className="flex flex-row items-center justify-center flex-wrap py-1 mt-20">
+			<div className="mt-20">
+				<div className="flex flex-wrap items-center justify-center bg-gradient-to-r from-green-500 to-cyan-500 h-80">
+
+					<div className="mx-20 flex items-center justify-center">
+						<div className="flex flex-col items-center justify-center">
+						<div className="my-5 mb-10 flex items-center justify-center">
+								<h1 className="font-roboto text-white text-6xl font-bold">CampusWorks</h1>
+							</div>
+							<div className="flex items-center justify-center">
+								<p className="font-roboto text-white text-3xl font-bold">Connecting University Students with Opportunities: <br/>
+								Find Part-time Jobs and Internships from your peers.</p>
+							</div>
+							
+						</div>
+						
+					</div>
+				</div>
+				
+			</div>
+
+			<div className="flex flex-row items-center justify-center flex-wrap py-1 -mt-9">
 				<div className="flex-1 m-2 py-1">
 				<div class="rounded-xl bg-white shadow-lg ">
 
@@ -82,7 +102,7 @@ const Main = () => {
 				</div>
 
 				<div className="flex-auto m-2 ">
-					<div class="rounded-lg bg-white p-6 shadow-lg bg-emerald-100 ">
+					<div class="rounded-lg  p-6 shadow-lg bg-emerald-100">
 					
 
 						<div class = "pb-3">
@@ -98,7 +118,7 @@ const Main = () => {
 						
 					</div>
 
-					<div class="rounded-lg bg-white p-6 shadow-lg bg-emerald-100 mt-5">
+					<div class="rounded-lg  p-6 shadow-lg bg-emerald-100 mt-5">
 						<div class = "pb-3">
 							<img src={write} height = "50" width = "50"alt="" />
 						</div>
@@ -128,17 +148,8 @@ const Main = () => {
 
 		</div>
 
-		<footer className="bg-gray-800 text-gray-400 py-4 absolute bottom-0 w-full">
-		<div className="container mx-auto px-4">
-			
-			<h1 className="text-center">CampusWorks</h1>
-			<p className="text-center">
-			All rights reserved
-			</p>
-		</div>
-		</footer>
+		<Footer />
     </div>
-	
 
 		
 	);
