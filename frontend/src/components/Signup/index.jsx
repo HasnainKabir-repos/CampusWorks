@@ -117,9 +117,16 @@ const Signup = () => {
                         </select>
 
 						{error && <div className={styles.error_msg}>{error}</div>}
-						<button type="submit" className={"border-none outline-none py-3 px-4 hover:shadow-xl hover:shadow-black-100 bg-green-500 text-white rounded-md w-48 font-medium text-base cursor-pointer font-poppins shadow-md my-4"}>
-							Sign Up
-						</button>
+						<button 
+                          type="submit" className={
+                            "border-none outline-none py-3 px-4 hover:shadow-xl hover:shadow-black-100 " + 
+                            "text-black rounded-md w-48 font-medium text-base cursor-pointer font-poppins " +
+                            "shadow-md my-4 bg-teal-400"
+                          }
+                          style={{ backgroundColor: '#4FFFB0' }}
+                        >
+                          Sign Up
+                        </button>
 					</form>
 				</div>
 			</div>

@@ -21,7 +21,7 @@ const Main = () => {
 					<div className="mx-20 flex items-center justify-center">
 						<div className="flex flex-col items-center justify-center">
 						<div className="my-5 mb-10 flex items-center justify-center">
-								<h1 className="font-roboto text-white text-6xl font-bold">CampusWorks</h1>
+								<h1 className="font-roboto text-black text-6xl font-bold">CampusWorks</h1>
 							</div>
 							<div className="flex items-center justify-center">
 								<p className="font-roboto text-white text-3xl font-bold">Connecting University Students with Opportunities: <br/>

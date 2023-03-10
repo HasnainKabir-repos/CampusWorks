@@ -55,9 +55,16 @@ const Login = () => {
 							className={styles.input}
 						/>
 						{error && <div className={styles.error_msg}>{error}</div>}
-						<button type="submit" className={"border-none outline-none py-3 px-4 bg-green-500 hover:shadow-xl hover:shadow-black-100 text-white rounded-md w-48 font-medium text-base cursor-pointer font-poppins shadow-md my-4"}>
-							Sign In
-						</button>
+						<button 
+                          type="submit" className={
+                            "border-none outline-none py-3 px-4 hover:shadow-xl hover:shadow-black-100 " + 
+                            "text-black rounded-md w-48 font-medium text-base cursor-pointer font-poppins " +
+                            "shadow-md my-4 bg-teal-400"
+                          }
+                          style={{ backgroundColor: '#4FFFB0' }}
+                        >
+                          Sign In
+                        </button>
 					</form>
 				</div>
 				<div className={styles.right}>
