@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken');
 const { User } = require('../models/user');
 const Job = require('../models/job');
 
-router.get('/', async(req, res) => res.json({ msg: "Job works"}));
 
 const authenticate = async (req, res, next) => {
     try {
@@ -47,6 +46,16 @@ router.post('/', authenticate, async (req, res) => {
     }
   });
 
+
+router.get('/', async (req, res) => {
+  try {
+    const jobs = await Job.find();
+
+    return res.json(jobs);
+  } catch (error) {
+    return res.status(500).json({ message: 'Error retrieving jobs', error: error });
+  }
+});
 
 module.exports = router;
 

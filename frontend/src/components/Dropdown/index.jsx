@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Dropdown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,13 +36,13 @@ function Dropdown() {
           isOpen ? "block" : "hidden"
         } absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5`}
       >
-        <a
-          href="#"
+        <Link
+          to="/jobs"
           className="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-600 hover:text-white"
-          role="menuitem"
+          
         >
           Jobs
-        </a>
+        </Link>
         <a
           href="#"
           className="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-600 hover:text-white"

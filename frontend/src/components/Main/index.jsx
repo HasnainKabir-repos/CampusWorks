@@ -114,9 +114,15 @@ const Main = () => {
 							<div class="mb-4 flex">
 								<input type="text" placeholder="Search Jobs" class="w-full rounded-l-md border border-gray-400 px-4 py-2 focus:border-green-600 focus:outline-none focus:ring" />
 								<button class="rounded-r-md bg-emerald-500 px-4 py-2 text-white hover:bg-teal-700 focus:border-green-600 focus:outline-none focus:ring">Search</button>
+								
 							</div>
 						<p class="flex text-gray-700 items-center justify-center py-5">Enter a keyword or a job title to find relevant jobs.</p>
 						
+						<div class="mb-4 flex items-center justify-center">
+								<Link to="/jobs" class="rounded-md bg-emerald-500 px-4 py-2 text-white hover:bg-teal-700 focus:border-green-600 focus:outline-none focus:ring">
+									Click here to view all jobs
+								</Link>
+						</div>
 					</div>
 
 					<div class="rounded-lg  p-6 shadow-lg bg-emerald-100 mt-5">
