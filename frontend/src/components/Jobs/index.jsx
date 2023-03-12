@@ -32,7 +32,7 @@ const Jobs = () =>{
                 </div>
 
                 <div className="flex flex-wrap items-center justify-center"> 
-                    <div className="flex flex-col gap-4 mt-5">
+                    <div className="flex flex-col gap-4 mt-5 mb-5">
 
                     {jobs.map(job => (
                         <div className="bg-white rounded-lg shadow p-4" key={job._id}>
