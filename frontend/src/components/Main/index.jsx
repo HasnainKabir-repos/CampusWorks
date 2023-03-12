@@ -3,6 +3,7 @@ import Footer from "../Footer";
 import avatar from "../../assets/avatar.png";
 import job_search from "../../assets/job_search.png";
 import write from "../../assets/write.png";
+import { Link } from "react-router-dom";
 const Main = () => {
 
 	const name = "Kabir";
@@ -125,7 +126,7 @@ const Main = () => {
 
 						<h2 class="mb-4 text-lg font-medium">Post a new work</h2>
 							<div class="mb-4 flex items-center justify-center">
-								<button class="rounded-md bg-emerald-500 px-4 py-2 text-white hover:bg-teal-700 focus:border-green-600 focus:outline-none focus:ring">Click here to post a new work</button>
+								<Link to="/postjob" class="rounded-md bg-emerald-500 px-4 py-2 text-white hover:bg-teal-700 focus:border-green-600 focus:outline-none focus:ring">Click here to post a new work</Link>
 							</div>
 					</div>
 				</div>

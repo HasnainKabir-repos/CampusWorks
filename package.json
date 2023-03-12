@@ -17,9 +17,12 @@
     "concurrently": "^7.6.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
+    "express-session": "^1.17.3",
     "joi": "^17.8.3",
     "joi-password-complexity": "^5.1.0",
     "jsonwebtoken": "^9.0.0",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1",
     "react-scroll": "^1.8.9"
   },
   "resolutions": {
