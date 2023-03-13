@@ -23,7 +23,7 @@ app.use(cors());
 app.use('/api/users',userRoutes);
 app.use('/api/auth',authRoutes);
 app.use('/api/jobs', jobRoutes);
-app.use('api/user_info',UserInfoRoutes)
+app.use('/api/user_info',UserInfoRoutes)
 app.use('/api/message', MessageRoute);
 app.use('/api/chat', ChatRoute);
 
