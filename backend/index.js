@@ -9,6 +9,8 @@ const authRoutes = require('./routes/auth');
 const UserInfoRoutes = require('./routes/user_info');
 
 const jobRoutes = require('./routes/jobs');
+const MessageRoute = require('./routes/MessageRoute');
+const ChatRoute = require('./routes/ChatRoute');
 
 //database connection
 connection();
@@ -21,9 +23,9 @@ app.use(cors());
 app.use('/api/users',userRoutes);
 app.use('/api/auth',authRoutes);
 app.use('/api/jobs', jobRoutes);
-app.use('/api/user_info',UserInfoRoutes);
-
-
+app.use('api/user_info',UserInfoRoutes)
+app.use('/api/message', MessageRoute);
+app.use('/api/chat', ChatRoute);
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Listening on port ${port}...`))
