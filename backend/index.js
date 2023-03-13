@@ -6,6 +6,8 @@ const connection = require('./database');
 
 const userRoutes = require('./routes/users');
 const authRoutes = require('./routes/auth');
+const UserInfoRoutes = require('./routes/user_info');
+
 const jobRoutes = require('./routes/jobs');
 
 //database connection
@@ -19,6 +21,8 @@ app.use(cors());
 app.use('/api/users',userRoutes);
 app.use('/api/auth',authRoutes);
 app.use('/api/jobs', jobRoutes);
+app.use('/api/user_info',UserInfoRoutes);
+
 
 
 const port = process.env.PORT || 8080;
