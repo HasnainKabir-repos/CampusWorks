@@ -19,6 +19,7 @@ function App() {
       
       <Route path="/" exact element={<Navigate replace to="/signup"/>}/>
       <Route path="/postjob" exact element={<Navigate replace to="/signup"/>}/>
+      <Route path="/profile" exact element={<Navigate replace to="/signup"/>}/>
       <Route path="/jobs" exact element={<Navigate replace to="/signup"/>}/>
       
      

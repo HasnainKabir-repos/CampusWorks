@@ -7,7 +7,12 @@ const Profile = () => {
   const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/user_info')
+    const token = localStorage.getItem('token');
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+
+    axios.get('http://localhost:8080/api/user_info', config)
       .then(response => {
         setUserInfo(response.data);
       })
