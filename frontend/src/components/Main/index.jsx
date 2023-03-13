@@ -35,7 +35,7 @@ const Main = () => {
 				</div>
 				
 			</div>
-
+			
 			<div className="flex flex-row items-center justify-center flex-wrap py-1 -mt-9">
 				<div className="flex-1 m-2 py-1">
 				<div class="rounded-xl bg-white shadow-lg ">
@@ -55,6 +55,7 @@ const Main = () => {
 							</div>
 						</div>
 					</div>
+					
 					
 
 					<div class="flex flex-wrap">
