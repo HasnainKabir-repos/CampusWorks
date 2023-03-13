@@ -7,8 +7,10 @@ const authenticate = async (req, res, next) => {
     try {
       const token = req.header('Authorization').replace('Bearer ', '');
       const decoded = jwt.verify(token, process.env.JWTPRIVATEKEY);
-      const user = await User.findOne({ _id: decoded._id, 'tokens.token': token });
-  
+      const user = await User.findOne({ _id: decoded._id});
+        
+      console.log(user);
+
       if (!user) {
         return res.status(401).json({ message: 'Authentication failed' });
       }
