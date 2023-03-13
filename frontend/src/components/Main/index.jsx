@@ -4,9 +4,26 @@ import avatar from "../../assets/avatar.png";
 import job_search from "../../assets/job_search.png";
 import write from "../../assets/write.png";
 import { Link } from "react-router-dom";
+import {useState, useEffect} from 'react';
+import axios from 'axios';
 const Main = () => {
 
-	const name = "Kabir";
+const [userInfo, setUserInfo] = useState({});
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+
+    axios.get('http://localhost:8080/api/user_info', config)
+      .then(response => {
+        setUserInfo(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
 
 	return (
 		<div className="bg-gray-100 h-full w-full ">
@@ -51,7 +68,7 @@ const Main = () => {
 							</div>
 
 							<div class = "flex flex-wrap items-center justify-center px-5 py-1">
-								<a href="" className="font-medium">{name}</a>
+								<a href="" className="font-medium">{userInfo.name}</a>
 							</div>
 						</div>
 					</div>
@@ -62,40 +79,32 @@ const Main = () => {
 						<div class="flex flex-col py-5">
 
 							<div class="flex flex-row">
-								<div className="flex-auto pl-5">
+								<div className="flex-wrap pl-5">
 									<h1 class="font-medium">Email:</h1>
 								</div>
-								<div className="flex-auto pl-6">
-									<h1 className="font-normal">nibir@iut-dhaka.edu</h1>
+								<div className="flex-wrap pl-6">
+									<h1 className="font-normal">{userInfo.email}</h1>
 								</div>
 							</div>
 
 							<div class="flex flex-row">
-								<div className="flex-auto pl-5">
+								<div className="flex-wrap pl-5">
 									<h1 class="font-medium">Department:</h1>
 								</div>
-								<div className="flex-auto pl-6">
-									<h1 className="font-normal">Computer Science and Engineering</h1>
+								<div className="flex-wrap pl-6">
+									<h1 className="font-normal">{userInfo.department}</h1>
 								</div>
 							</div>
 
 							<div class="flex flex-row">
-								<div className="flex-auto pl-5">
+								<div className="flex-wrap pl-5">
 									<h1 class="font-medium">Batch:</h1>
 								</div>
-								<div className="flex-auto pl-6">
-									<h1 className="font-normal">20</h1>
+								<div className="flex-wrap pl-6">
+									<h1 className="font-normal">{userInfo.batch}</h1>
 								</div>
 							</div>
 
-							<div class="flex flex-row">
-								<div className="flex-auto pl-5">
-									<h1 class="font-medium">Description:</h1>
-								</div>
-								<div className="flex-auto pl-6">
-									<h1 className="font-normal">something</h1>
-								</div>
-							</div>
 
 
 						</div>
