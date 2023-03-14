@@ -26,7 +26,7 @@ const authenticate = async (req, res, next) => {
 
 router.post('/', authenticate, async (req, res) => {
     try {
-        const { email} = req.user;
+        const { email } = req.user;
 
         const userProfile = {
             $set :
@@ -60,8 +60,9 @@ router.post('/', authenticate, async (req, res) => {
 
   router.get('/', authenticate, async (req, res) => {
     try {
-        const userProfiles = await UserProfile.findOne({ email: req.body.email });
-  
+        const { email } = req.user;
+        const userProfiles = await UserProfile.findOne({ useremail: email });
+      
       return res.json(userProfiles);
     } catch (error) {
       return res.status(500).json({ message: 'Error retrieving user profiles', error: error });
