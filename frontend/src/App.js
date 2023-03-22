@@ -5,6 +5,7 @@ import Login from './components/Login';
 import Post_job from './components/Post_job';
 import Jobs from './components/Jobs';
 import Profile from './components/Profile';
+import Chat from './components/Chat/Chat';
 
 function App() {
   const user = localStorage.getItem('token');
@@ -14,6 +15,7 @@ function App() {
       {user && <Route path = "/jobs" exact element={<Jobs/>}/>}
       {user && <Route path = "/profile" exact element={<Profile/>}/>}
       {user && <Route path = "/postjob" exact element={<Post_job/>}/>}
+      {user && <Route path = "/chat" exact element={<Chat/>}/>}
       <Route path ="/login" exact element={<Login/>}/>
       <Route path ="/signup" exact element={<Signup/>}/>
       
