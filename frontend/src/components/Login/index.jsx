@@ -19,7 +19,8 @@ const Login = () => {
 			const { data: res } = await axios.post(url, data);
 			localStorage.setItem("token", res.data);
 			window.location = "/";
-		} catch (error) {
+		} 
+		catch (error) {
 			if (
 				error.response &&
 				error.response.status >= 400 &&
@@ -35,7 +36,7 @@ const Login = () => {
 			<div className={styles.login_form_container}>
 				<div className={styles.left}>
 					<form className={styles.form_container} onSubmit={handleSubmit}>
-						<h1>Log into Your Account</h1>
+						<h1 class="font-bold text-3xl">Log In to Your Account</h1>
 						<input
 							type="email"
 							placeholder="Email"
@@ -54,6 +55,10 @@ const Login = () => {
 							required
 							className={styles.input}
 						/>
+						<Link to="/forgot-password" style={{ alignSelf: "flex-start" }}>
+                            <p style={{ padding: "25px 2px", fontSize: "14px", color: "#1E40AF" }}>Forgot Password?</p>
+                        </Link>
+
 						{error && <div className={styles.error_msg}>{error}</div>}
 						<button 
                           type="submit" className={
