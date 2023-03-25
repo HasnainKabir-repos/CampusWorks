@@ -56,7 +56,7 @@ const Login = () => {
 							className={styles.input}
 						/>
 						<Link to="/forgot-password" style={{ alignSelf: "flex-start" }}>
-                            <p style={{ padding: "25px 2px", fontSize: "14px", color: "#1E40AF" }}>Forgot Password?</p>
+                            <p style={{ padding: "25px 2px", fontSize: "14px", color: "#1E40AF", fontWeight:"bold"}}>Forgot Password?</p>
                         </Link>
 
 						{error && <div className={styles.error_msg}>{error}</div>}
