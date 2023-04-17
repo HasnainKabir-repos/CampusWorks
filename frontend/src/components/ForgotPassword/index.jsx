@@ -45,12 +45,12 @@ const ForgotPassword = () => {
           type="submit"
           className={
             "border-none outline-none py-3 px-4 hover:shadow-xl hover:shadow-black-100 " +
-            "text-black font-bold rounded-md w-48 font-small text-base cursor-pointer font-poppins " +
+            "text-black font-bold rounded-md w-80 font-small text-base cursor-pointer font-poppins " +
             "shadow-md my-4 bg-teal-400"
           }
           style={{ backgroundColor: "#4FFFB0", fontWeight: 500 }}
         >
-          Send Reset Link
+          Send Password Reset Link
         </button>
       </form>
     </div>
