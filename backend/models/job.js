@@ -24,6 +24,10 @@ const jobSchema = new Schema({
     price: {
       type: Schema.Types.Decimal128,
     },
+    keywords: {
+      type: [String],
+      default: [],
+    },
     datePosted: {
       type: Date,
       default: Date.now,

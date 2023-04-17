@@ -11,7 +11,7 @@ import Chat from './components/Chat/Chat';
 import EmailVerify from './components/EmailVerify';
 import ForgotPassword from './components/ForgotPassword';
 import PasswordReset from "./components/PasswordReset";
-
+import MyJobs from "./components/MyJobs";
 function App() {
   const user = localStorage.getItem('token');
   return (
@@ -21,6 +21,7 @@ function App() {
       {user && <Route path = "/profile" exact element={<Profile/>}/>}
       {user && <Route path = "/EditProfile" exact element={<EditProfile/>}/>}
       {user && <Route path = "/postjob" exact element={<Post_job/>}/>}
+      {user && <Route path = "/myjobs" exact element={<MyJobs/>}/>}
       <Route path ="/login" exact element={<Login/>}/>
       <Route path ="/signup" exact element={<Signup/>}/>
       
@@ -31,6 +32,7 @@ function App() {
       <Route path="/jobs" exact element={<Navigate replace to="/signup"/>}/>
 
       <Route path="/postjob" exact element={<Navigate replace to="/login"/>}/>
+      <Route path="/myjobs" exact element={<Navigate replace to="/login"/>}/>
       <Route path="/profile" exact element={<Navigate replace to="/login"/>}/>
       <Route path="/jobs" exact element={<Navigate replace to="/login"/>}/>
       <Route path="/chat" element={user ? <Chat /> : <Navigate to="../login" />}/>

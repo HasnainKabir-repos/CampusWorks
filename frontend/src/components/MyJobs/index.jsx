@@ -1,57 +1,44 @@
 import TopBar from "../TopBar";
-import axios from 'axios';
-import { useState, useEffect } from "react";
 import Footer from "../Footer";
-const Jobs = () =>{
+import { useState, useEffect } from "react";
+import axios from "axios";
+const MyJobs = () =>{
 
     const [jobs, setJobs] = useState([]);
-    const [currentUser, setCurrentUser] = useState("");
 
 
     useEffect(() => {
+
         const token = localStorage.getItem('token');
         const config = {
             headers: { Authorization: `Bearer ${token}` }
         };
-        axios.get('http://localhost:8080/api/jobs', config)
-          .then(response => {
+
+        axios.get('http://localhost:8080/api/myjobs', config)
+        .then(response => {
             setJobs(response.data);
             //console.log(response.data);
-          })
-          .catch(error => {
+        })
+        .catch(error =>{
             console.log(error);
-          });
+        });
     }, []);
 
-    useEffect(() =>{
-        const token = localStorage.getItem('token');
-        const config = {
-            headers: { Authorization: `Bearer ${token}` }
-        };
-
-        axios.get('http://localhost:8080/api/getcurrentuser', config)
-        .then(response => {
-            setCurrentUser(response.data);
-            console.log(response.data);
-          })
-          .catch(error => {
-            console.log(error);
-          });
-    }, []);
-      
     return(
         <>
-            <TopBar />
-            <main className="pt-20 bg-gray-100 min-h-screen">
+        <TopBar />
 
-            <div class = "flex flex-col">
+        <main className="pt-20 bg-gray-100 min-h-screen">
+
+            <div class="flex flex-col">
 
                 <div className="flex min-w-screen items-center justify-center bg-gradient-to-r from-green-500 to-cyan-500 h-36">
                     <h1 className="font-roboto text-white text-4xl font-bold animate-pulse">
-                        {jobs.length} jobs and counting!
-                        <span className="animate-bounce ml-2">🚀</span>
+                        You have posted {jobs.length} jobs
+                        <span className="animate-bounce ml-2">💼</span>
                     </h1>
                 </div>
+
 
                 <div className="flex flex-wrap items-center justify-center"> 
                 <div className="w-full md:w-1/2 px-4">
@@ -77,17 +64,6 @@ const Jobs = () =>{
                             </div>
                         )}
                         </div>
-
-                        <div className="flex items-center justify-center  mt-4">
-                            <button 
-                            type="submit" 
-                            className="block mt-4 w-full md:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-green-500 to-cyan-500 hover:bg-gradient-to-r hover:from-green-400 hover:to-cyan-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 shadow-sm"
-                            disabled={job.userEmail === currentUser}
-                            >
-                            {job.userEmail === currentUser ? "Job Posted by You" : "Apply Now"}
-                            </button>
-                        </div>
-                        
                     </div>
                     ))}
                 </div>
@@ -95,11 +71,11 @@ const Jobs = () =>{
 
             </div>
 
-                
-            </main>
-            <Footer />
-        </>
-    );
-};
+        </main>
 
-export default Jobs;
+        <Footer />
+        </>
+    )
+}
+
+export default MyJobs;

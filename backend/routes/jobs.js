@@ -34,7 +34,8 @@ router.post('/', authenticate, async (req, res) => {
             jobCategory : "Job",
             jobDescription : req.body.jobDescription,
             jobDuration : req.body.jobDuration,
-            price : req.body.price
+            price : req.body.price,
+            keywords: req.body.keywords 
         });
 
         await newJob.save();
@@ -47,10 +48,9 @@ router.post('/', authenticate, async (req, res) => {
   });
 
 
-router.get('/', async (req, res) => {
+router.get('/', authenticate, async (req, res) => {
   try {
-    const jobs = await Job.find();
-
+    const jobs = await Job.find().sort({datePosted: -1});
     return res.json(jobs);
   } catch (error) {
     return res.status(500).json({ message: 'Error retrieving jobs', error: error });

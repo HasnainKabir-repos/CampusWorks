@@ -9,8 +9,8 @@ const authRoutes = require('./routes/auth');
 const UserInfoRoutes = require('./routes/user_info');
 const UserProfileRoutes = require('./routes/userProfile');
 const passwordResetRoutes = require("./routes/passwordReset");
-
-
+const myjobsRoutes = require("./routes/myjobs");
+const getCurrentUserRoutes = require("./routes/getCurrentUser");
 const jobRoutes = require('./routes/jobs');
 const MessageRoute = require('./routes/MessageRoute');
 const ChatRoute = require('./routes/ChatRoute');
@@ -31,7 +31,8 @@ app.use('/api/message', MessageRoute);
 app.use('/api/chat', ChatRoute);
 app.use('/api/userProfile', UserProfileRoutes);
 app.use('/api/password-reset', passwordResetRoutes);
-
+app.use('/api/myjobs', myjobsRoutes);
+app.use('/api/getcurrentuser', getCurrentUserRoutes);
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Listening on port ${port}...`))
