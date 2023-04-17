@@ -73,7 +73,8 @@ const Login = () => {
 					</form>
 				</div>
 				<div className={styles.right}>
-					<h1>New to CampusWorks ?</h1>
+					<h1>New to</h1>
+					<h1>CampusWorks?</h1>
 					<Link to="/signup">
 						
 						{/* Had to convert the style to tailwind */}

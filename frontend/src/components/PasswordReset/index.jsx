@@ -29,7 +29,10 @@ const PasswordReset = () => {
       const { data } = await axios.post(url, { password });
       setMsg(data.message);
       setError("");
-      window.location = "/login";
+      setTimeout(() => {
+        setMsg("");
+        window.location = "/login";
+      }, 1500);
     } catch (error) {
       if (
         error.response &&
@@ -47,10 +50,10 @@ const PasswordReset = () => {
       {validUrl ? (
         <div className={styles.container}>
           <form className={styles.form_container} onSubmit={handleSubmit}>
-             <h4 class="text-2xl font-bold font-poppins">Add New Password</h4>
+            <h1 class="text-xl font-bold font-poppins p-4">Add New Password</h1>
             <input
               type="password"
-              placeholder="Password"
+              placeholder="Enter Your New Password"
               name="password"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
@@ -63,12 +66,12 @@ const PasswordReset = () => {
               type="submit"
               className={
                 "border-none outline-none py-3 px-4 hover:shadow-xl hover:shadow-black-100 " +
-                "text-black rounded-md w-48 font-small text-base cursor-pointer font-poppins " +
+                "text-black font-bold rounded-md w-48 font-small text-base cursor-pointer font-poppins " +
                 "shadow-md my-4 bg-teal-400"
               }
-              style={{ backgroundColor: "#4FFFB0" }}
+              style={{ backgroundColor: "#4FFFB0", fontWeight: 500 }}
             >
-              Submit
+              Set As New Password
             </button>
           </form>
         </div>
