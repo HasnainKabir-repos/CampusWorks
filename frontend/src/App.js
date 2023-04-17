@@ -5,7 +5,12 @@ import Login from './components/Login';
 import Post_job from './components/Post_job';
 import Jobs from './components/Jobs';
 import Profile from './components/Profile';
+
 import EditProfile from './components/EditProfile';
+import Chat from './components/Chat/Chat';
+import EmailVerify from './components/EmailVerify';
+import ForgotPassword from './components/ForgotPassword';
+import PasswordReset from "./components/PasswordReset";
 
 function App() {
   const user = localStorage.getItem('token');
@@ -24,8 +29,15 @@ function App() {
       <Route path="/profile" exact element={<Navigate replace to="/signup"/>}/>
       <Route path="/edit_profile" exact element={<Navigate replace to="/signup"/>}/>
       <Route path="/jobs" exact element={<Navigate replace to="/signup"/>}/>
-      
-     
+
+      <Route path="/postjob" exact element={<Navigate replace to="/login"/>}/>
+      <Route path="/profile" exact element={<Navigate replace to="/login"/>}/>
+      <Route path="/jobs" exact element={<Navigate replace to="/login"/>}/>
+      <Route path="/chat" element={user ? <Chat /> : <Navigate to="../login" />}/>
+      <Route path="/users/:id/verify/:token" element={<EmailVerify/>}/>
+      <Route path="/forgot-password" element={<ForgotPassword/>}/>
+      <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
+
     </Routes>
   );
 }

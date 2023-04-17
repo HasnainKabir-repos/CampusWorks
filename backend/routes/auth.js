@@ -2,14 +2,7 @@ const router = require('express').Router();
 const {User} = require('../models/user');
 const Joi = require('joi');
 const bcrypt = require('bcrypt');
-const session = require('express-session');
 
-router.use(session({
-    secret: 'mysecret',
-    resave: false,
-    saveUninitialized: true,
-  }));
-  
 router.post("/",async(req,res)=>{
     try{
         const{error} = validate(req.body);
@@ -24,7 +17,6 @@ router.post("/",async(req,res)=>{
         if(!validPassword)
             return res.status(401).send({message:'Invalid email or password'});
 
-        req.session.email = req.body.email;
         const token = user.generateAuthToken();
         res.status(200).send({data: token,message:'Logged In Successfully'});
     }catch(error){
