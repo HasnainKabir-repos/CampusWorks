@@ -37,16 +37,16 @@ router.post("/", async (req, res) => {
     <p>We received a request to reset the password for your account.</p>
     <p>Please click <a href="${resetPasswordUrl}">here</a> to set a new password.</p>
     <p>If you did not request a password reset, please ignore this email.</p>
-    <p>Best,</p>
+    <p>Best Regards,</p>
     <p>Team CampusWorks</p>`;
 
     await sendEmail(user.email, "Password Reset", emailBody);
 
     res
       .status(200)
-      .send({ message: "Password reset link sent to your email account" });
+      .send({ message: "Password Reset Link Sent to Your Email" });
   } catch (error) {
-    console.log(error); // Add this line to log any errors
+    console.log(error);
     res.status(500).send({ message: "Internal Server Error" });
   }
 });

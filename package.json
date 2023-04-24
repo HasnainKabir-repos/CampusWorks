@@ -23,7 +23,8 @@
     "jsonwebtoken": "^9.0.0",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
-    "react-scroll": "^1.8.9"
+    "react-scroll": "^1.8.9",
+    "react-tag-input": "^6.8.1"
   },
   "resolutions": {
     "styled-components": "^5"

@@ -127,7 +127,7 @@ const Signup = () => {
               </label>
               <input
                 type="batch"
-                placeholder="Batch"
+                placeholder="Enter Your Batch"
                 name="batch"
                 onChange={handleChange}
                 value={data.batch}
