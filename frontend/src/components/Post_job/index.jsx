@@ -27,6 +27,7 @@ const Post_job = () => {
         setTags(newTags);
     };    
 
+    
     const handleSubmit = async(e) =>{
         e.preventDefault();
         try{
@@ -187,6 +188,7 @@ const Post_job = () => {
                             <div class="p-4 pt-20">
                             <h2 class="text-xl font-bold mb-2 text-green-600">What are the keywords associated with this job?</h2>
                             <p class="text-gray-700 text-lg">Add keywords for this job to get more accurate searches. <br />
+                                                            Every keyword will be stored as lowercase <br /> 
                                                             (Press Enter to add a new keyword).</p>
                             </div>
                         </div>

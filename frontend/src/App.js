@@ -5,7 +5,7 @@ import Login from './components/Login';
 import Post_job from './components/Post_job';
 import Jobs from './components/Jobs';
 import Profile from './components/Profile';
-
+import Search_Results from './components/Search_Results';
 import EditProfile from './components/EditProfile';
 import Chat from './components/Chat/Chat';
 import EmailVerify from './components/EmailVerify';
@@ -22,6 +22,7 @@ function App() {
       {user && <Route path = "/EditProfile" exact element={<EditProfile/>}/>}
       {user && <Route path = "/postjob" exact element={<Post_job/>}/>}
       {user && <Route path = "/myjobs" exact element={<MyJobs/>}/>}
+      {user && <Route path = "/search_results" exact element={<Search_Results/>}/>}
       <Route path ="/login" exact element={<Login/>}/>
       <Route path ="/signup" exact element={<Signup/>}/>
       
@@ -30,7 +31,8 @@ function App() {
       <Route path="/profile" exact element={<Navigate replace to="/signup"/>}/>
       <Route path="/edit_profile" exact element={<Navigate replace to="/signup"/>}/>
       <Route path="/jobs" exact element={<Navigate replace to="/signup"/>}/>
-
+      
+      <Route path="/search_results" exact element={<Navigate replace to="/login"/>}/>
       <Route path="/postjob" exact element={<Navigate replace to="/login"/>}/>
       <Route path="/myjobs" exact element={<Navigate replace to="/login"/>}/>
       <Route path="/profile" exact element={<Navigate replace to="/login"/>}/>

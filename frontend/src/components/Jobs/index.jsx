@@ -32,7 +32,6 @@ const Jobs = () =>{
         axios.get('http://localhost:8080/api/getcurrentuser', config)
         .then(response => {
             setCurrentUser(response.data);
-            console.log(response.data);
           })
           .catch(error => {
             console.log(error);

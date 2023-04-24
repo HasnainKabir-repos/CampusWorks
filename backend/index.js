@@ -14,6 +14,7 @@ const getCurrentUserRoutes = require("./routes/getCurrentUser");
 const jobRoutes = require('./routes/jobs');
 const MessageRoute = require('./routes/MessageRoute');
 const ChatRoute = require('./routes/ChatRoute');
+const userName = require('./routes/getUsername');
 
 //database connection
 connection();
@@ -33,6 +34,6 @@ app.use('/api/userProfile', UserProfileRoutes);
 app.use('/api/password-reset', passwordResetRoutes);
 app.use('/api/myjobs', myjobsRoutes);
 app.use('/api/getcurrentuser', getCurrentUserRoutes);
-
+app.use('/api/getUsername', userName)
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Listening on port ${port}...`))

@@ -27,6 +27,7 @@ const jobSchema = new Schema({
     keywords: {
       type: [String],
       default: [],
+      lowercase: true,
     },
     datePosted: {
       type: Date,
@@ -40,6 +41,13 @@ jobSchema.set('toJSON', {
     ret.price = ret.price.toString();
     return ret;
   },
+});
+
+jobSchema.pre("save", function (next) {
+  if (this.isModified("keywords")) {
+    this.keywords = this.keywords.map((keyword) => keyword.toLowerCase());
+  }
+  next();
 });
   
 module.exports = mongoose.model('Jobs', jobSchema);

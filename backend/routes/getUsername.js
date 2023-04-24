@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Job = require('../models/job');
-const jwt = require('jsonwebtoken');
 const { User } = require('../models/user');
-
+const jwt = require('jsonwebtoken');
 const authenticate = async (req, res, next) => {
     try {
       const token = req.header('Authorization').replace('Bearer ', '');
@@ -23,16 +21,14 @@ const authenticate = async (req, res, next) => {
     }
   };
 
-
-  router.get('/', authenticate, async (req, res) => {
+router.get('/' , authenticate, async (req, res) =>{
     try{
-        const { email } = req.user;
-        const jobs = await Job.find({userEmail : email}).sort({datePosted: -1});
-
-        return res.json(jobs);
-    }catch (error) {
-        return res.status(500).json({ message: 'Error retrieving jobs', error: error});
+        const { email} = req.user;
+        const userInfo = await User.findOne({email:email}).select({name:1, _id:0});
+        return res.json(userInfo);
+    }catch(error){
+        return res.status(500).json({message:"Error retrieving username"});
     }
-  });
+});
 
-  module.exports = router;
+module.exports = router;

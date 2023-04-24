@@ -4,8 +4,10 @@ import avatar from "../../assets/avatar.png";
 import job_search from "../../assets/job_search.png";
 import write from "../../assets/write.png";
 import { Link } from "react-router-dom";
+import { FaPlus } from 'react-icons/fa';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+import { FaUserFriends, FaBriefcase, FaSearch } from 'react-icons/fa';
 const Main = () => {
 
 const [userInfo, setUserInfo] = useState({});
@@ -113,37 +115,44 @@ const [userInfo, setUserInfo] = useState({});
 				</div>
 
 				<div className="flex-auto m-2 ">
-					<div class="rounded-lg  p-6 shadow-lg bg-emerald-100">
-					
-
-						<div class = "pb-3">
-							<img src={job_search} height = "50" width = "50"alt="" />
-						</div>
-
-						<h2 class="mb-4 text-lg font-medium">Job Search</h2>
-							<div class="mb-4 flex">
-								<input type="text" placeholder="Search Jobs" class="w-full rounded-l-md border border-gray-400 px-4 py-2 focus:border-green-600 focus:outline-none focus:ring" />
-								<button class="rounded-r-md bg-emerald-500 px-4 py-2 text-white hover:bg-teal-700 focus:border-green-600 focus:outline-none focus:ring">Search</button>
-								
+					<div className="flex flex-col items-center justify-center ">
+						<div className="bg-gradient-to-r from-emerald-50 to-cyan-100 p-8 rounded-lg shadow-md flex flex-col items-center w-4/5">
+							<div className="flex items-center justify-center rounded-full w-16 h-16 bg-green-500 text-white mb-6">
+							<FaUserFriends className="text-2xl" />
 							</div>
-						<p class="flex text-gray-700 items-center justify-center py-5">Enter a keyword or a job title to find relevant jobs.</p>
-						
-						<div class="mb-4 flex items-center justify-center">
-								<Link to="/jobs" class="rounded-md bg-emerald-500 px-4 py-2 text-white hover:bg-teal-700 focus:border-green-600 focus:outline-none focus:ring">
-									Click here to view all jobs
+							<h2 className="text-2xl font-bold mb-2">Find Your Dream Job</h2>
+							<p className="text-gray-600 text-center mb-6">
+							Looking for a new career opportunity? Browse our job listings and find your dream job today.
+							</p>
+
+							<div class = "flex flex-row">
+								<Link to="/Jobs"className="mr-2 bg-green-500 text-white rounded-lg px-4 py-2 hover:bg-green-600 focus:outline-none focus:ring focus:border-green-500">
+								<FaBriefcase className="mr-2" />
+								Browse all Jobs
 								</Link>
+
+								<Link to="/search_results"className="ml-2 bg-green-500 text-white rounded-lg px-4 py-2 hover:bg-green-600 focus:outline-none focus:ring focus:border-green-500">
+								<FaSearch className="mr-2" />
+								Search for Jobs
+								</Link>
+							</div>
+							
 						</div>
 					</div>
-
-					<div class="rounded-lg  p-6 shadow-lg bg-emerald-100 mt-5">
-						<div class = "pb-3">
-							<img src={write} height = "50" width = "50"alt="" />
-						</div>
-
-						<h2 class="mb-4 text-lg font-medium">Post a new work</h2>
-							<div class="mb-4 flex items-center justify-center">
-								<Link to="/postjob" class="rounded-md bg-emerald-500 px-4 py-2 text-white hover:bg-teal-700 focus:border-green-600 focus:outline-none focus:ring">Click here to post a new work</Link>
+					<div className="flex flex-col items-center justify-center mt-10">
+						<div className="bg-gradient-to-r from-emerald-50 to-cyan-100 p-8 rounded-lg shadow-md flex flex-col items-center w-4/5">
+							<div className="flex items-center justify-center rounded-full w-16 h-16 bg-green-500 text-white mb-6">
+							<FaPlus className="text-2xl" />
 							</div>
+							<h2 className="text-2xl font-bold mb-2">Post New Work</h2>
+							<p className="text-gray-600 text-center mb-6">
+							Share your latest creations with the world. Post new work and get noticed by potential clients and collaborators.
+							</p>
+							<Link to="/postjob" className="bg-green-500 text-white rounded-lg px-4 py-2 hover:bg-green-600 focus:outline-none focus:ring focus:border-blue-500">
+							<FaPlus className="mr-2" />
+							Post Work
+							</Link>
+						</div>
 					</div>
 				</div>
 

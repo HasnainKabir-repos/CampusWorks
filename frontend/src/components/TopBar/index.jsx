@@ -2,6 +2,7 @@ import campusWorks from "../../assets/campusWorks.png";
 import logout from "../../assets/logout.png";
 import Dropdown from "../Dropdown";
 import { Link } from 'react-router-dom';
+import Dropdown2 from "../Dropdown2";
 const TopBar = () => {
 
 
@@ -37,7 +38,13 @@ const TopBar = () => {
                         <a href="/myjobs" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 ">My jobs</a>
                     </li>
                     </ul>
-                      <Dropdown />  
+                    <div className="mx-1">
+                        <Dropdown2/>
+                    </div>
+                    <div className="mx-1">
+                        <Dropdown />
+                    </div>
+
                 </div>
             </div>
 

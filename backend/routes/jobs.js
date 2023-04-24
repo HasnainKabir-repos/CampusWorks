@@ -57,5 +57,32 @@ router.get('/', authenticate, async (req, res) => {
   }
 });
 
+router.get('/search', async (req, res) => {
+  try{
+    const { keywords } = req.query;
+
+    const jobs = await Job.find({keywords: {$in : keywords}}).sort( {datePosted: -1});
+    return res.json(jobs);
+
+  }catch(error){
+    return res.status(500).json({ message: 'Error retrieving jobs', error: error});
+  }
+});
+
+router.get('/getKeywords', async (req, res) => {
+  try{
+    const mostFrequentKeywords = await Job.aggregate([
+      { $unwind: "$keywords" },
+      { $group: { _id: "$keywords", count: { $sum: 1 } } },
+      { $sort: { count: -1 } },
+      { $limit: 10 } // Change the limit as per requirement (n most frequent keywords)
+    ]);
+
+    return res.json(mostFrequentKeywords);
+  }catch (error){
+    return res.status(500).json({message: 'Error retrieving relevant keywords', error: error});
+  }
+})
+
 module.exports = router;
 
