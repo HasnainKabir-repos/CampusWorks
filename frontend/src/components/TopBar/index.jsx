@@ -54,6 +54,14 @@ const TopBar = () => {
               </li>
               <li>
                 <a
+                  href="/payment"
+                  class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 "
+                >
+                  Payment
+                </a>
+              </li>
+              <li>
+                <a
                   href="/myjobs"
                   class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 "
                 >

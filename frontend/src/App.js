@@ -12,6 +12,7 @@ import EmailVerify from './components/EmailVerify';
 import ForgotPassword from './components/ForgotPassword';
 import PasswordReset from "./components/PasswordReset";
 import MyJobs from "./components/MyJobs";
+import Payment from "./components/Payment"
 function App() {
   const user = localStorage.getItem('token');
   return (
@@ -23,6 +24,7 @@ function App() {
       {user && <Route path = "/postjob" exact element={<Post_job/>}/>}
       {user && <Route path = "/myjobs" exact element={<MyJobs/>}/>}
       {user && <Route path = "/search_results" exact element={<Search_Results/>}/>}
+      {user && <Route path = "/payment" exact element={<Payment/>}/>}
       <Route path ="/login" exact element={<Login/>}/>
       <Route path ="/signup" exact element={<Signup/>}/>
       
