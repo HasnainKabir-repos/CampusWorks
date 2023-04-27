@@ -11,6 +11,10 @@ const Search_Results = () =>{
     const [isLoading, setIsLoading] = useState(false);
     const [currentUser, setCurrentUser] = useState("");
 
+    const [jobType, setJobType] = useState("");
+    const [minPrice, setMinPrice] = useState("");
+    const [maxPrice, setMaxPrice] = useState("");
+
     const [freqKeywords, setFreqKeywords] = useState([]);
     const freqKeywordsNames = freqKeywords.map(key => key._id);
 
@@ -33,8 +37,11 @@ const Search_Results = () =>{
           setIsLoading(true);
           try {
             const data = {
-                keywords :keywords
-            }
+                keywords: keywords,
+                jobType: jobType,
+                minPrice: minPrice,
+                maxPrice: maxPrice
+              };
             const response = await axios.get(`http://localhost:8080/api/jobs/search`, { params: data });
             setJobs(response.data);
             //console.log(response.data);
@@ -46,7 +53,7 @@ const Search_Results = () =>{
         };
     
         fetchData();
-      }, [keywords]);
+      }, [keywords, jobType, minPrice, maxPrice]);
 
       useEffect(() =>{
         const token = localStorage.getItem('token');
@@ -75,6 +82,18 @@ const Search_Results = () =>{
         console.log(event.target.value);
     }
 
+    const handleJobTypeChange = (event) =>{
+        setJobType(event.target.value);
+    }
+
+    const handleMinPriceChange = (event) => {
+        setMinPrice(event.target.value);
+    }
+
+    const handleMaxPriceChange = (event) => {
+        setMaxPrice(event.target.value);
+    }
+
     return(
         <>
             <TopBar />
@@ -92,34 +111,34 @@ const Search_Results = () =>{
                                 <h2 className="font-bold mb-4">Filter</h2>
                                 <label className="block font-medium text-gray-700 mb-2">Job Type:</label>
                                 <select
-
+                                    onChange={handleJobTypeChange}
                                     className="block w-full border-gray-400 border rounded-md py-2 px-3 mb-3"
                                 >
                                     <option value="">All</option>
-                                    <option value="hourly">Hourly</option>
-                                    <option value="fixed">Fixed</option>
+                                    <option value="Hourly">Hourly</option>
+                                    <option value="Fixed">Fixed</option>
                                 </select>
                                 <label className="block font-medium text-gray-700 mb-2">Price Range:</label>
                                 <div className="flex flex-wrap">
                                     <input
                                     type="number"
-
+                                    onChange={handleMinPriceChange}
                                     placeholder="Min"
                                     className="w-1/2 border-gray-400 border rounded-md py-2 px-3 mr-2 mb-3"
                                     />
                                     <input
                                     type="number"
-
+                                    onChange={handleMaxPriceChange}
                                     placeholder="Max"
                                     className="w-1/2 border-gray-400 border rounded-md py-2 px-3 mb-3"
                                     />
                                 </div>
-                                <button
+                                {/*<button
 
                                     className="block bg-gradient-to-r from-green-500 to-cyan-500 hover:bg-gradient-to-r hover:from-green-400 hover:to-cyan-400 text-white font-medium rounded-md py-2 px-4 mt-4"
                                 >
                                     Filter Jobs
-                                </button>
+                            </button> */}
                             </div>
 
                             </div>

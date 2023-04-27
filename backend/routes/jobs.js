@@ -59,9 +59,30 @@ router.get('/', authenticate, async (req, res) => {
 
 router.get('/search', async (req, res) => {
   try{
-    const { keywords } = req.query;
+    const { keywords, jobType, minPrice, maxPrice } = req.query;
 
-    const jobs = await Job.find({keywords: {$in : keywords}}).sort( {datePosted: -1});
+    let query = {
+      keywords: {$in : keywords}
+    };
+
+    if(jobType){
+      query.jobDuration = jobType;
+    }
+
+    if (minPrice && maxPrice) {
+
+      query.price = { $gte: minPrice, $lte: maxPrice };
+
+    } else if (minPrice) {
+
+      query.price = { $gte: minPrice };
+
+    } else if (maxPrice) {
+      
+      query.price = { $lte: maxPrice };
+    }
+
+    const jobs = await Job.find(query).sort( {datePosted: -1});
     return res.json(jobs);
 
   }catch(error){
@@ -75,7 +96,7 @@ router.get('/getKeywords', async (req, res) => {
       { $unwind: "$keywords" },
       { $group: { _id: "$keywords", count: { $sum: 1 } } },
       { $sort: { count: -1 } },
-      { $limit: 10 } // Change the limit as per requirement (n most frequent keywords)
+      { $limit: 10 } 
     ]);
 
     return res.json(mostFrequentKeywords);
