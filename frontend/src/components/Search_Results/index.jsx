@@ -138,7 +138,7 @@ const Search_Results = () =>{
                                     className="block bg-gradient-to-r from-green-500 to-cyan-500 hover:bg-gradient-to-r hover:from-green-400 hover:to-cyan-400 text-white font-medium rounded-md py-2 px-4 mt-4"
                                 >
                                     Filter Jobs
-                            </button> */}
+                        </button> */}
                             </div>
 
                             </div>
