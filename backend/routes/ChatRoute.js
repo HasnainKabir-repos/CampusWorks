@@ -1,9 +1,29 @@
 const express = require('express');
-const { createChat, findChat, userChats } = require('../controllers/ChatController.js');
-const router = express.Router()
+const Chat =  require("../models/chatModel.js");
+const router = express.Router();
 
-router.post('/', createChat);
-router.get('/:userId', userChats);
-router.get('/find/:firstId/:secondId', findChat);
+router.post("/", async (req, res) => {
+    const newConversation = new Chat({
+      members: [req.body.senderId, req.body.receiverId],
+    });
+  
+    try {
+      const savedConversation = await newConversation.save();
+      res.status(200).json(savedConversation);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+
+  router.get("/:userId", async (req, res) => {
+    try {
+      const conversation = await Chat.find({
+        members: { $in: [req.params.userId] },
+      });
+      res.status(200).json(conversation);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
 
 module.exports = router;

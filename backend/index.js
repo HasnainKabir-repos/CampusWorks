@@ -11,6 +11,8 @@ const UserProfileRoutes = require('./routes/userProfile');
 const passwordResetRoutes = require("./routes/passwordReset");
 const myjobsRoutes = require("./routes/myjobs");
 const getCurrentUserRoutes = require("./routes/getCurrentUser");
+const getCurrentUserIDRoutes = require("./routes/getCurrentUserID");
+const getUserRoutes = require("./routes/getUser");
 const jobRoutes = require('./routes/jobs');
 const MessageRoute = require('./routes/MessageRoute');
 const ChatRoute = require('./routes/ChatRoute');
@@ -27,13 +29,15 @@ app.use(cors());
 app.use('/api/users',userRoutes);
 app.use('/api/auth',authRoutes);
 app.use('/api/jobs', jobRoutes);
-app.use('/api/user_info',UserInfoRoutes)
+app.use('/api/user_info',UserInfoRoutes);
 app.use('/api/message', MessageRoute);
 app.use('/api/chat', ChatRoute);
 app.use('/api/userProfile', UserProfileRoutes);
 app.use('/api/password-reset', passwordResetRoutes);
 app.use('/api/myjobs', myjobsRoutes);
 app.use('/api/getcurrentuser', getCurrentUserRoutes);
+app.use('/api/getcurrentuserID', getCurrentUserIDRoutes);
+app.use('/api/getuser', getUserRoutes);
 app.use('/api/getUsername', userName)
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Listening on port ${port}...`))
