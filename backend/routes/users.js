@@ -1,8 +1,6 @@
 const router = require("express").Router();
 const { User, validate } = require("../models/user");
 const Token = require("../models/token");
-const crypto = require("crypto");
-const sendEmail = require("../utils/sendEmail");
 const bcrypt = require("bcrypt");
 
 router.post("/", async (req, res) => {
@@ -20,23 +18,16 @@ router.post("/", async (req, res) => {
 		if (user)
 			return res
 				.status(409)
-				.send({ message: "User with given email already Exist!" });
+				.send({ message: "User with given email already exists!" });
 
 		const salt = await bcrypt.genSalt(Number(process.env.SALT));
 		const hashPassword = await bcrypt.hash(req.body.password, salt);
 
 		user = await new User({ ...req.body, password: hashPassword }).save();
 
-		const token = await new Token({
-			userId: user._id,
-			token: crypto.randomBytes(32).toString("hex"),
-		}).save();
-		const url = `${process.env.BASE_URL}users/${user.id}/verify/${token.token}`;
-		await sendEmail(user.email, "Verify Email", url);
-
 		res
 			.status(201)
-			.send({ message: "An Email sent to your account please verify" });
+			.send({ message: "User created successfully" });
 	} catch (error) {
 		console.log(error);
 		res.status(500).send({ message: "Internal Server Error" });

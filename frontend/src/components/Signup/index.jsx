@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
@@ -13,7 +13,16 @@ const Signup = () => {
     department: "",
   });
   const [error, setError] = useState("");
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (showModal) {
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
+    }
+  }, [showModal, navigate]);
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
@@ -24,7 +33,7 @@ const Signup = () => {
     try {
       const url = "http://localhost:8080/api/users";
       const { data: res } = await axios.post(url, data);
-      navigate("/login");
+      setShowModal(true);
       console.log(res.message);
     } catch (error) {
       if (
@@ -203,6 +212,17 @@ const Signup = () => {
               </select>
             </div>
             {error && <div className={styles.error_msg}>{error}</div>}
+            {showModal && (
+              <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                <div className="bg-white p-8 rounded-md">
+                  <p className="text-lg font-semibold text-center">
+                    Registration successful!
+                  </p>
+                  <p className="text-center">Redirecting to login page...</p>
+                </div>
+              </div>
+            )}
+
             <button
               type="submit"
               className={
