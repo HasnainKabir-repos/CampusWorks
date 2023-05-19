@@ -257,13 +257,8 @@ const Post_job = () => {
                 </main>
                     <Footer />
             </div>  
-            
-
-
-        </>
-        
+        </>   
     );
-
 };
 
 export default Post_job;
