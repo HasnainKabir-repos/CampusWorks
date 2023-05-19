@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
-function Dropdown() {
+function Dropdown3() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -32,7 +32,7 @@ function Dropdown() {
         aria-expanded={isOpen ? "true" : "false"}
         aria-haspopup="true"
       >
-        All
+        Learn & Grow
         <svg
           className={`-mr-1 ml-2 h-5 w-5 text-gray-500 transform ${
             isOpen ? "rotate-180" : ""
@@ -52,24 +52,23 @@ function Dropdown() {
       {isOpen && (
         <div className="absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
           <Link
-            to="/jobs"
+            to="/resources"
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-600 hover:text-white"
             onClick={handleClick}
           >
-            Jobs
+            View Resources
           </Link>
-          <a
-            href="#"
+          <Link
+            to="/post_resources"
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-600 hover:text-white"
-            role="menuitem"
             onClick={handleClick}
           >
-            Internships
-          </a>
+            Post Resources
+          </Link>
         </div>
       )}
     </div>
   );
 }
 
-export default Dropdown;
+export default Dropdown3;
