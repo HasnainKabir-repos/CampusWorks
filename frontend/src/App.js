@@ -12,7 +12,6 @@ import EmailVerify from './components/EmailVerify';
 import ForgotPassword from './components/ForgotPassword';
 import PasswordReset from "./components/PasswordReset";
 import MyJobs from "./components/MyJobs";
-import Payment from "./components/Payment"
 import Post_Resources from "./components/Post_Resources"
 import Resources from "./components/Resources"
 function App() {
@@ -26,7 +25,6 @@ function App() {
       {user && <Route path = "/postjob" exact element={<Post_job/>}/>}
       {user && <Route path = "/myjobs" exact element={<MyJobs/>}/>}
       {user && <Route path = "/search_results" exact element={<Search_Results/>}/>}
-      {user && <Route path = "/payment" exact element={<Payment/>}/>}
       {user && <Route path = "/post_resources" exact element={<Post_Resources/>}/>}
       {user && <Route path = "/resources" exact element={<Resources/>}/>}
       <Route path ="/login" exact element={<Login/>}/>

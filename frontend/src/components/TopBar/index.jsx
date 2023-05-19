@@ -38,7 +38,7 @@ const TopBar = () => {
               <li>
                 <Link
                   to="/"
-                  className={`block py-2 pl-3 pr-4 rounded ${
+                  className={`block py-2 pl-3 pr-4 rounded text-sm ${
                     location.pathname === "/" ? "text-blue-700" : "text-gray-700"
                   } hover:bg-blue-700 hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:p-0`}
                 >
@@ -63,16 +63,6 @@ const TopBar = () => {
                   } hover:bg-blue-700 hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:p-0`}
                 >
                   Inbox
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/payment"
-                  className={`block py-2 pl-3 pr-4 rounded ${
-                    location.pathname === "/payment" ? "text-blue-700" : "text-gray-700"
-                  } hover:bg-blue-700 hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:p-0`}
-                >
-                  Payment
                 </Link>
               </li>
               <li>
