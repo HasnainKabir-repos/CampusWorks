@@ -11,6 +11,7 @@ const UserProfileSchema = new Schema({
     Strength: { type: String },
     Education:{type: String},
     Achievements:  {type: String},
+    photo:{type: String}
         
 
   });

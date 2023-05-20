@@ -67,12 +67,21 @@ const Profile = () => {
       <div className="bg-gradient-to-r from-green-500 to-cyan-500 py-4 text-center text-white font-bold">
         <h1 className="text-xl">Welcome to Your Profile Page, {userInfo.name}!</h1>
       </div>
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden p-5 flex flex-col items-center">
-          <img
-            src={avatar}
-            alt="avatar"
-            className="w-32 h-32 rounded-full mb-5"
-          />
+      <div className="bg-white rounded-lg shadow-lg overflow-hidden p-5 flex flex-col items-center">
+  {userProfile.photo ? (
+    <img
+      src={`http://localhost:8080/api/images/${userProfile.photo}`}
+      alt="avatar"
+      className="w-32 h-32 rounded-full mb-5"
+    />
+  ) : (
+    <img
+      src={avatar}// Replace with the path to your default avatar image
+      alt="default-avatar"
+      className="w-32 h-32 rounded-full mb-5"
+    />
+  )}
+
 
           <h1 className="text-2xl font-medium mb-2">{userInfo.name}</h1>
           <p className="text-gray-600 mb-1">Email: {userInfo.email}</p>
