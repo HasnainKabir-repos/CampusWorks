@@ -38,17 +38,16 @@ const Main = () => {
           <div className="flex flex-wrap items-center justify-center bg-gradient-to-r from-green-500 to-cyan-500 h-80">
             <div className="mx-20 flex items-center justify-center">
               <div className="flex flex-col items-center justify-center">
-                <div className="my-5 mb-10 flex items-center justify-center">
-                  <h1 className="font-roboto text-black text-6xl font-bold">
+                <div className="my-1 mb-10 flex items-center justify-center">
+                  <h1 className="font-poppins text-black text-6xl font-bold">
                     CampusWorks
                   </h1>
                 </div>
                 <div className="flex items-center justify-center">
-                  <p className="font-roboto text-white text-3xl font-bold">
-                    Connecting University Students with Opportunities
+                  <p className="font-poppins text-gray-700 font-poppins text-3xl font-bold text-center">
+                    Connecting IUT Students with Opportunities
                     <br />
-                    Find Part-time Freelance Jobs and Internships from your
-                    peers
+                    Find Freelance Jobs and Internships from Your Peers
                   </p>
                 </div>
               </div>
@@ -57,10 +56,10 @@ const Main = () => {
         </div>
 
         <div className="flex flex-row items-center justify-center flex-wrap py-1 -mt-9">
-          <div className="flex-1 m-2 py-1">
+        <div className="flex-1 m-2 py-1">
             <div class="rounded-xl bg-white shadow-lg ">
-              <div class="flex flex-wrap w-full px-3 pt-3 bg-emerald-500">
-                <h2 class="mb-4 text-lg font-medium text-white">Profile</h2>
+              <div class="flex flex-wrap items-center justify-center w-full px-3 pt-3 bg-gradient-to-r from-green-500 to-cyan-500">
+                <h2 class="font-poppins mb-4 text-lg font-bold text-black">Your Profile</h2>
               </div>
 
               <div class="flex flex-wrap items-center justify-center">
@@ -110,10 +109,10 @@ const Main = () => {
             </div>
           </div>
 
-          <div className="flex-auto m-2 ">
+          <div className="flex-auto m-2">
             <div className="flex flex-col items-center justify-center ">
               <div className="bg-gradient-to-r from-emerald-50 to-cyan-100 p-8 rounded-lg shadow-md flex flex-col items-center w-4/5">
-                <div className="flex items-center justify-center rounded-full w-16 h-16 bg-green-500 text-white mb-6">
+                <div className="flex items-center justify-center rounded-full w-16 h-16 bg-gradient-to-r from-green-500 to-cyan-500 text-black mb-6">
                   <FaUserFriends className="text-2xl" />
                 </div>
                 <h2 className="text-2xl font-bold mb-2">Find Your Freelance Job</h2>
@@ -125,7 +124,7 @@ const Main = () => {
                 <div class="flex flex-row">
                   <Link
                     to="/Jobs"
-                    className="flex items-center mr-2 bg-green-500 text-black rounded-lg px-8 py-4 hover:bg-green-600 focus:outline-none focus:ring focus:border-green-500"
+                    className="flex items-center mr-2 bg-gradient-to-r from-green-500 to-cyan-500 text-black font-semibold rounded-lg px-8 py-4 hover:bg-green-600 focus:outline-none focus:ring focus:border-green-500"
                   >
                     <FaBriefcase className="mr-2" />
                     Browse all Jobs
@@ -133,7 +132,7 @@ const Main = () => {
 
                   <Link
                     to="/search_results"
-                    className="flex items-center mr-2 bg-green-500 text-black rounded-lg px-8 py-4 hover:bg-green-600 focus:outline-none focus:ring focus:border-green-500"
+                    className="flex items-center mr-2 bg-gradient-to-r from-green-500 to-cyan-500 text-black font-semibold rounded-lg px-8 py-4 hover:bg-green-600 focus:outline-none focus:ring focus:border-green-500"
                   >
                     <FaSearch className="mr-2" />
                     Search for Jobs
@@ -143,17 +142,17 @@ const Main = () => {
             </div>
             <div className="flex flex-col items-center justify-center mt-10">
               <div className="bg-gradient-to-r from-emerald-50 to-cyan-100 p-8 rounded-lg shadow-md flex flex-col items-center w-4/5">
-                <div className="flex items-center justify-center rounded-full w-16 h-16 bg-green-500 text-white mb-6">
+                <div className="flex items-center justify-center rounded-full w-16 h-16 bg-gradient-to-r from-green-500 to-cyan-500 text-black mb-6">
                   <FaPlus className="text-2xl" />
                 </div>
                 <h2 className="text-2xl font-bold mb-2">Post New Work</h2>
                 <p className="text-gray-600 text-center mb-6">
-                  Share your latest creations with the world. Post new work and
-                  get noticed by potential clients and collaborators.
+                  Share your latest Jobs that you want to get done by your peers <br/>
+                  Have Impact on them and help them to grow.
                 </p>
                 <Link
                   to="/postjob"
-                  className="flex items-center mr-2 bg-green-500 text-black rounded-lg px-8 py-4 hover:bg-green-600 focus:outline-none focus:ring focus:border-green-500"
+                  className="flex items-center mr-2 bg-gradient-to-r from-green-500 to-cyan-500 text-black font-semibold rounded-lg px-8 py-4 hover:bg-green-600 focus:outline-none focus:ring focus:border-green-500"
                 >
                   <FaPlus className="mr-2" />
                   Post Work
@@ -162,7 +161,7 @@ const Main = () => {
             </div>
           </div>
 
-          <div className="flex-1 m-2 mx-3">
+           <div className="flex-1 m-2 mx-2">
             <div class="rounded-xl bg-white shadow-lg">
               <div class="flex flex-wrap w-full px-3 pt-3 bg-emerald-500">
                 <h2 class="mb-4 text-lg font-medium text-white">Inbox</h2>
