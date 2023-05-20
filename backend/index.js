@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const connection = require('./database');
+const path = require('path');
 
 const userRoutes = require('./routes/users');
 const authRoutes = require('./routes/auth');
@@ -20,6 +21,7 @@ const userName = require('./routes/getUsername');
 const resourcesRoutes = require('./routes/resources');
 const Proposal = require('./routes/proposal');
 const internshipRoutes = require('./routes/internships');
+
 
 //database connection
 connection();
@@ -43,6 +45,8 @@ app.use('/api/internships', internshipRoutes);
 
 app.use('/api/getcurrentuserID', getCurrentUserIDRoutes);
 app.use('/api/getuser', getUserRoutes);
+app.use('/api/images', express.static(path.join(__dirname,'images')));
+
 app.use('/api/getUsername', userName)
 
 app.use('/api/getUsername', userName);
