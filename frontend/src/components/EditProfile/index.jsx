@@ -93,34 +93,34 @@ const EditProfile = () => {
     return (
       <>
         <div className="flex flex-col min-h-screen bg-gray-100">
-          <TopBar />
-          <main className="flex pt-20 items-center justify-center rounded-lg">
-            <div className="flex items-center justify-center w-full">
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                {/* Profile Picture */}
-                <div className="flex items-center justify-center">
-                <div className="w-60 h-60 bg-gray-300 rounded-full flex items-center justify-center">
-                {userProfile.photo ? (
-    <img
-      src={`http://localhost:8080/api/images/${userProfile.photo}`}
-      alt="avatar"
-      className="w-32 h-32 rounded-full mb-5"
-    />
-  ) : (
-    <img
-      src={avatar}// Replace with the path to your default avatar image
-      alt="default-avatar"
-      className="w-32 h-32 rounded-full mb-5"
-    />
-  )}
-                </div>
-                </div>
-  
-                {/* Edit Profile Form */}
-                <div className="bg-white rounded-lg shadow-lg p-8">
-                  <h1 className="font-medium text-green-600 text-2xl mb-4">
-                    Edit Profile
-                  </h1>
+  <TopBar />
+  <main className="flex-grow flex items-center justify-center bg-gray-100">
+    <div className="flex w-full">
+      {/* Profile Picture */}
+      <div className="w-1/2 flex items-center justify-center bg-gray-200">
+        <div className="w-full h-full flex items-center justify-center">
+          {userProfile.photo ? (
+            <img
+              src={`http://localhost:8080/api/images/${userProfile.photo}`}
+              alt="avatar"
+              className="w-72 h-72 rounded-full mb-5"
+            />
+          ) : (
+            <img
+              src={avatar} // Replace with the path to your default avatar image
+              alt="default-avatar"
+              className="w-72 h-72 rounded-full mb-5"
+            />
+          )}
+        </div>
+      </div>
+
+      {/* Edit Profile Form */}
+      <div className="flex items-center justify-center w-full h-full">
+        <div className="bg-white rounded-lg shadow-lg p-8 w-full h-full">
+          <h1 className="font-medium text-green-600 text-2xl mb-4">
+            Edit Profile
+          </h1>
                   {/* Add your form code here */}
                   <form onSubmit={handleSubmit} encType="multipart/form-data">
                   <div className="relative z-0 w-full mb-6 group">
