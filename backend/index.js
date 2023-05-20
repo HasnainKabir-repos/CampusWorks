@@ -18,7 +18,7 @@ const MessageRoute = require('./routes/MessageRoute');
 const ChatRoute = require('./routes/ChatRoute');
 const userName = require('./routes/getUsername');
 const resourcesRoutes = require('./routes/resources');
-
+const Proposal = require('./routes/proposal');
 //database connection
 connection();
 
@@ -44,6 +44,8 @@ app.use('/api/getUsername', userName)
 
 app.use('/api/getUsername', userName);
 app.use('/api/resources', resourcesRoutes);
+
+app.use('/api/proposal', Proposal);
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Listening on port ${port}...`))

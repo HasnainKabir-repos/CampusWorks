@@ -103,7 +103,7 @@ router.get('/getKeywords', async (req, res) => {
   }catch (error){
     return res.status(500).json({message: 'Error retrieving relevant keywords', error: error});
   }
-})
+});
 
 module.exports = router;
 
