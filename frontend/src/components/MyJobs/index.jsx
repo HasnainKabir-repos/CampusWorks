@@ -295,7 +295,7 @@ const MyJobs = () => {
                                             proposalId: proposal._id,
                                           })
                                         }
-                                        className="mx-1 flex items-center justify-center px-4 py-2 text-black bg-emerald-600 rounded-lg hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        className="mx-1 flex items-center justify-center px-4 py-2 text-white bg-emerald-600 rounded-lg hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                       >
                                         <FaEye className="mr-2" />
                                         View Proposal
