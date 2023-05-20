@@ -39,7 +39,9 @@ const TopBar = () => {
                 <Link
                   to="/"
                   className={`block py-2 pl-3 pr-4 rounded text-sm ${
-                    location.pathname === "/" ? "text-blue-700" : "text-gray-700"
+                    location.pathname === "/"
+                      ? "text-blue-700"
+                      : "text-gray-700"
                   } hover:bg-blue-700 hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:p-0`}
                 >
                   Home
@@ -49,7 +51,9 @@ const TopBar = () => {
                 <Link
                   to="/profile"
                   className={`block py-2 pl-3 pr-4 rounded ${
-                    location.pathname === "/profile" ? "text-blue-700" : "text-gray-700"
+                    location.pathname === "/profile"
+                      ? "text-blue-700"
+                      : "text-gray-700"
                   } hover:bg-blue-700 hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:p-0`}
                 >
                   Profile
@@ -59,7 +63,9 @@ const TopBar = () => {
                 <Link
                   to="/inbox"
                   className={`block py-2 pl-3 pr-4 rounded ${
-                    location.pathname === "/inbox" ? "text-blue-700" : "text-gray-700"
+                    location.pathname === "/inbox"
+                      ? "text-blue-700"
+                      : "text-gray-700"
                   } hover:bg-blue-700 hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:p-0`}
                 >
                   Inbox
@@ -69,7 +75,9 @@ const TopBar = () => {
                 <Link
                   to="/myjobs"
                   className={`block py-2 pl-3 pr-4 rounded ${
-                    location.pathname === "/myjobs" ? "text-blue-700" : "text-gray-700"
+                    location.pathname === "/myjobs"
+                      ? "text-blue-700"
+                      : "text-gray-700"
                   } hover:bg-blue-700 hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:p-0`}
                 >
                   My Jobs
@@ -77,11 +85,12 @@ const TopBar = () => {
               </li>
             </ul>
             <div className="mx-1">
-              <Dropdown2 />
-            </div>
-            <div className="mx-1">
               <Dropdown />
             </div>
+            <div className="mx-1">
+              <Dropdown2 />
+            </div>
+
             <div className="mx-1">
               <Dropdown3 />
             </div>
@@ -115,4 +124,3 @@ const TopBar = () => {
 };
 
 export default TopBar;
-

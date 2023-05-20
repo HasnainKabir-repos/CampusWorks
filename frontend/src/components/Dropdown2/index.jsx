@@ -35,7 +35,7 @@ function Dropdown() {
         aria-expanded={isOpen ? "true" : "false"}
         aria-haspopup="true"
       >
-        Create
+        Post Job/Internship
         <svg
           className={`-mr-1 ml-2 h-5 w-5 text-gray-500 transform ${
             isOpen ? "rotate-180" : ""

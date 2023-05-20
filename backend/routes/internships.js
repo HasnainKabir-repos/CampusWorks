@@ -25,7 +25,7 @@ const authenticate = async (req, res, next) => {
 
 router.post("/", authenticate, async (req, res) => {
   try {
-    const { email,name } = req.user;
+    const { email, name } = req.user;
 
     const newInternship = new Internship({
       userEmail: email,
@@ -34,7 +34,7 @@ router.post("/", authenticate, async (req, res) => {
       companyName: req.body.companyName,
       internshipDomain: req.body.internshipDomain,
       applyMedium: req.body.applyMedium,
-      lastDateToApply: req.body.lastDateToApply, // Convert string to Date object
+      lastDateToApply: new Date(req.body.lastDateToApply), // Convert string to Date object
       description: req.body.description,
     });
 

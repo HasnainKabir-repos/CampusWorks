@@ -131,16 +131,18 @@ const Resources = () => {
                 <option value="Mechanical Engineering">
                   Mechanical Engineering
                 </option>
+                <option value="Business and Management">
+                  Business and Management
+                </option>
                 <option value="Others">Others</option>
               </select>
             </div>
             <button
-  onClick={handleSearch}
-  className="w-full py-2.5 px-4 text-md font-semibold text-black bg-green-500 hover:bg-green-600 active:bg-green-700 rounded-md focus:outline-none"
->
-  Search
-</button>
-
+              onClick={handleSearch}
+              className="w-full py-2.5 px-4 text-md font-semibold text-black bg-green-500 hover:bg-green-600 active:bg-green-700 rounded-md focus:outline-none"
+            >
+              Search
+            </button>
           </div>
           <div className="w-full md:w-3/4 px-4 py-4">
             <div className="flex-col items-center justify-center">
@@ -152,11 +154,11 @@ const Resources = () => {
                   >
                     <div className="flex flex-col">
                       <div className="flex items-center mb-2">
-                        <p className="font-bold text-gray-600 mr-2">
+                        <p className="font-bold text-xl text-blue-600 mr-2">
                           {resource.userName}
                         </p>
-                        <p className="text-blue-400 font-semibold">
-                          posted at {formatDate(resource.datePosted)}
+                        <p className="text-gray-600 font-semibold">
+                          Posted at {formatDate(resource.datePosted)}
                         </p>
                       </div>
                       <h2 className="font-bold text-xl mb-2">
