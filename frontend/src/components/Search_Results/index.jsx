@@ -4,6 +4,7 @@ import TopBar from "../TopBar";
 import Cool_card from "../Cool_card";
 import { FaSearch } from "react-icons/fa";
 import axios from "axios";
+import Send_Proposal from "../Send_Proposal";
 const Search_Results = () => {
   const [jobs, setJobs] = useState([]);
   const [keywords, setKeywords] = useState([]);
@@ -16,6 +17,18 @@ const Search_Results = () => {
 
   const [freqKeywords, setFreqKeywords] = useState([]);
   const freqKeywordsNames = freqKeywords.map((key) => key._id);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [thisJob, setThisJob] = useState("");
+
+    const handleModalOpen = (job) =>{
+        setThisJob(job);
+        setIsModalOpen(true);
+    }
+
+    const handleCloseModal = () =>{
+        setIsModalOpen(false);
+    }
 
   useEffect(() => {
     const getKeywords = async () => {
@@ -224,11 +237,15 @@ const Search_Results = () => {
                               type="submit"
                               className="block mt-4 w-full md:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-green-500 to-cyan-500 hover:bg-gradient-to-r hover:from-green-400 hover:to-cyan-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 shadow-sm"
                               disabled={job.userEmail === currentUser}
+                            onClick={() =>handleModalOpen(job)}
                             >
                               {job.userEmail === currentUser
                                 ? "Posted by You"
                                 : "Apply Now"}
                             </button>
+                            {isModalOpen && (
+                            <Send_Proposal jobs = {thisJob} onClose = {handleCloseModal} />
+                        )}
                           </div>
                         </div>
                       ))}

@@ -105,5 +105,16 @@ router.get('/getKeywords', async (req, res) => {
   }
 });
 
+router.post('/delete', async (req, res) =>{
+  try{
+    const job = req.body.id;
+
+    await Job.deleteOne({_id: job});
+
+    return res.json({message: "job deleted successfully"});
+  }catch(error){
+    return res.status(500).json({message: 'Error deleting job', error: error});
+  }
+})
 module.exports = router;
 

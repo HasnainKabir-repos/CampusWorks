@@ -3,7 +3,7 @@ import Footer from "../Footer";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Transition } from "@headlessui/react";
-import { FaEye, FaComment } from 'react-icons/fa';
+import { FaEye, FaComment, FaCheckCircle, FaClock,  FaTrash } from 'react-icons/fa';
 const MyJobs = () =>{
 
     const [jobs, setJobs] = useState([]);
@@ -37,6 +37,23 @@ const MyJobs = () =>{
         }
         
     }
+
+    const handleAccept = async ({jobId, proposalId}) => {
+        const data = {
+            jobId: jobId,
+            proposalId: proposalId
+        };
+
+        try{
+            const response = await axios.post(`http://localhost:8080/api/proposal/accept`, data);
+            window.location.reload();
+ 
+            console.log(response);
+        }catch (error) {
+            console.log(error);
+        }
+    }
+
 
     const handleViewProposal = async ({email, proposalId}) => {
         setIsLoading(true);
@@ -78,6 +95,21 @@ const MyJobs = () =>{
 
     }
 
+    const handleDeleteJob = async (jobId) => {
+        try{
+            const data = {
+                id: jobId
+            };
+
+            const response = await axios.post(
+                'http://localhost:8080/api/jobs/delete', data
+            );
+            window.location.reload();
+            console.log(response.data);
+        }catch(error){
+            console.log(error);
+        }
+    }
     const handleBtnClick = async ({job, index}) =>{
         setIsCard(true);
         setindex(index);
@@ -162,6 +194,14 @@ const MyJobs = () =>{
                             className="block mt-4 w-full md:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-cyan-500 to-green-500 hover:bg-gradient-to-r hover:from-blue-400 hover:to-emerald-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 shadow-sm">
                                 View Proposals
                             </button>
+                            <button
+                                        onClick={() => handleDeleteJob(job._id)}
+                                            className="block mt-4 mx-2 w-full md:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                        >
+                                            
+                                            <FaTrash className="mr-2" />
+                                            Delete this job
+                            </button>
                         </div>
                         <div >
                         <Transition
@@ -180,7 +220,7 @@ const MyJobs = () =>{
                                     {/* List of people who have sent proposals */}
                                     {proposals.map((proposal, index) => (
                                     <div className="flex items-center justify-between my-4 p-4 bg-gradient-to-r from-neutral-900 to-zinc-700 rounded-lg shadow-md">
-                                        <h3 className="text-2xl font-bold text-emerald-300">{index + 1}</h3>
+                                        <h3 className="text-2xl font-bold text-emerald-300">{(proposal.status === true) ? <FaCheckCircle color = "green" /> : <FaClock color = "green" />} {index + 1} </h3>
                                         <p className="text-lg text-teal-200 font-medium">{proposal.senderEmail}</p>
                                         <div className="flex flex-row">
                                         
@@ -217,6 +257,10 @@ const MyJobs = () =>{
                                             <FaComment className="mr-2" />
                                             Message
                                         </button>
+                                        
+                                            
+                                        
+                                        
                                         </div>
 
                                         <div>
@@ -295,10 +339,12 @@ const MyJobs = () =>{
                                                             Decline
                                                         </button>
 
-                                                        <button 
+                                                        <button onClick={() => {handleAccept({jobId: job._id, proposalId: thisProposal._id})}}
                                                         className="block mt-4 w-full md:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-purple-500 to-fuchsia-500 hover:bg-gradient-to-r hover:from-purple-400 hover:to-fuchsia-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 shadow-sm">
                                                             Accept
                                                         </button>
+
+                                                        
 
                                                     </div>
                                                 </div>

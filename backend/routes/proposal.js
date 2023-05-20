@@ -40,4 +40,24 @@ router.post('/delete', async (req, res) => {
     }
 });
 
+router.post('/accept', async(req, res) =>{
+    try{
+        const jobId = req.body.jobId;
+        const proposalId = req.body.proposalId;
+
+        await Proposals.updateOne(
+            { _id: proposalId },
+            { $set: { status: true } }
+        );
+
+        await Proposals.deleteMany({ jobId: jobId, _id: { $ne: proposalId } });
+        const prop = await Proposals.findOne({_id: proposalId, status: true});
+     // Send a success response
+     res.status(200).json({ proposal: prop, message: 'Proposal accepted and other proposals deleted successfully.' });
+    } catch (error) {
+      // Handle any errors
+      res.status(500).json({ message: 'Error accepting proposal and deleting other proposals.', error: error });
+    }
+});
+
 module.exports = router;

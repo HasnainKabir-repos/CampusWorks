@@ -113,7 +113,7 @@ const Send_Proposal = ({jobs, onClose}) =>{
         <>
             <form onSubmit={handleSubmit}>
             <div className="fixed inset-0 bg-gray-100 bg-opacity-20 flex items-center justify-center ">
-            <div className=" bg-stone-900  opacity-80 rounded-lg shadow-lg p-6 w-2/3">
+            <div className=" bg-stone-900  opacity-90 rounded-lg shadow-lg p-6 w-2/3">
                 <h1 className="text-xl font-medium mb-4 text-white">Submit a proposal</h1>
                 <div className="flex flex-col items-center justify-center">
                     <div className="rounded-lg bg-transparent border-2 border-green-100 text-white justify-items-start pl-3 pb-2 pt-2 w-full my-2">
