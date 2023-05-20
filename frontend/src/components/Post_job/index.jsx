@@ -308,7 +308,7 @@ const Post_job = () => {
                     </svg>
                     <span className="sr-only">Success</span>
                   </div>
-                  <p class="mb-4 text-lg font-semibold text-gray-900 ">
+                  <p class="mb-4 text-lg font-semibold text-white">
                     Job Created Successfully.
                   </p>
                   <button
