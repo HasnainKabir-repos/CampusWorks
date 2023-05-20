@@ -27,43 +27,42 @@ const Resources = () => {
   }, []);
 
   useEffect(() => {
-  let isMounted = true; // Flag to check if the component is still mounted
+    let isMounted = true; // Flag to check if the component is still mounted
 
-  const fetchData = async () => {
-    const token = localStorage.getItem("token");
-    const config = {
-      headers: { Authorization: `Bearer ${token}` },
+    const fetchData = async () => {
+      const token = localStorage.getItem("token");
+      const config = {
+        headers: { Authorization: `Bearer ${token}` },
+      };
+
+      try {
+        const resourcesResponse = await axios.get(
+          "http://localhost:8080/api/resources",
+          config
+        );
+
+        const currentUserResponse = await axios.get(
+          "http://localhost:8080/api/getcurrentuser",
+          config
+        );
+
+        if (isMounted) {
+          setResources(resourcesResponse.data);
+          setFilteredResources(resourcesResponse.data);
+          setCurrentUser(currentUserResponse.data);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     };
 
-    try {
-      const resourcesResponse = await axios.get(
-        "http://localhost:8080/api/resources",
-        config
-      );
+    fetchData();
 
-      const currentUserResponse = await axios.get(
-        "http://localhost:8080/api/getcurrentuser",
-        config
-      );
-
-      if (isMounted) {
-        setResources(resourcesResponse.data);
-        setFilteredResources(resourcesResponse.data);
-        setCurrentUser(currentUserResponse.data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  fetchData();
-
-  return () => {
-    // Cleanup function to cancel any pending fetch requests
-    isMounted = false;
-  };
-}, []);
-
+    return () => {
+      // Cleanup function to cancel any pending fetch requests
+      isMounted = false;
+    };
+  }, []);
 
   const formatDate = (date) => {
     const options = {
@@ -136,11 +135,12 @@ const Resources = () => {
               </select>
             </div>
             <button
-              onClick={handleSearch}
-              className="w-full py-2.5 px-4 text-md font-semibold text-white bg-cyan-700 rounded-md focus:outline-none hover:bg-teal-700"
-            >
-              Search
-            </button>
+  onClick={handleSearch}
+  className="w-full py-2.5 px-4 text-md font-semibold text-black bg-green-500 hover:bg-green-600 active:bg-green-700 rounded-md focus:outline-none"
+>
+  Search
+</button>
+
           </div>
           <div className="w-full md:w-3/4 px-4 py-4">
             <div className="flex-col items-center justify-center">

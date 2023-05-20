@@ -19,6 +19,8 @@ const ChatRoute = require('./routes/ChatRoute');
 const userName = require('./routes/getUsername');
 const resourcesRoutes = require('./routes/resources');
 const Proposal = require('./routes/proposal');
+const internshipRoutes = require('./routes/internships');
+
 //database connection
 connection();
 
@@ -37,6 +39,7 @@ app.use('/api/userProfile', UserProfileRoutes);
 app.use('/api/password-reset', passwordResetRoutes);
 app.use('/api/myjobs', myjobsRoutes);
 app.use('/api/getcurrentuser', getCurrentUserRoutes);
+app.use('/api/internships', internshipRoutes);
 
 app.use('/api/getcurrentuserID', getCurrentUserIDRoutes);
 app.use('/api/getuser', getUserRoutes);

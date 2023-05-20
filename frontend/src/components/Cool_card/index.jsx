@@ -44,10 +44,10 @@ const Cool_card = () => {
         >
             <div className="px-9 py-7">
             <div className="flex flex-col items-center justify-between p-5">
-                <div className="text-4xl font-bold text-white">
+                <div className="text-4xl font-bold text-black">
                 Welcome, {username} ! 
                 </div>
-                <div className="text-3xl font-bold text-white">
+                <div className="text-3xl font-bold text-gray-800">
                 {new Date().toLocaleDateString()}
                 </div>
             </div>

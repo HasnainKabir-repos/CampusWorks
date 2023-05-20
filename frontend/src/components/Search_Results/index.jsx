@@ -110,11 +110,13 @@ const Search_Results = () => {
           </div>
 
           <div className="flex flex-row w-full">
-            <div className="w-1/4 flex items-start justify-center">
-              <div className="bg-white rounded-lg shadow p-4">
-                <h2 className="font-bold mb-4">Filter</h2>
-                <label className="block font-medium text-gray-700 mb-2">
-                  Job Type:
+            <div className="w-1/4 flex items-start justify-center pr-3 ml-3">
+              <div className="bg-gradient-to-r from-green-500 to-cyan-500 rounded-lg shadow p-4">
+                <h2 className="font-bold mb-4 text-xl text-center">
+                  Filter Jobs
+                </h2>
+                <label className="block font-semibold text-black mb-2">
+                  Job Type :
                 </label>
                 <select
                   onChange={handleJobTypeChange}
@@ -124,37 +126,34 @@ const Search_Results = () => {
                   <option value="Hourly">Hourly</option>
                   <option value="Fixed">Fixed</option>
                 </select>
-                <label className="block font-medium text-gray-700 mb-2">
-                  Price Range:
+                <label className="block font-semibold text-black mb-2">
+                  Price Range :
                 </label>
-                <div className="flex flex-wrap">
+                <div className="flex">
                   <input
                     type="number"
                     onChange={handleMinPriceChange}
                     placeholder="Min"
-                    className="w-1/2 border-gray-400 border rounded-md py-2 px-3 mr-2 mb-3"
+                    className="w-1/2 mr-2 border-gray-400 border rounded-md py-2 px-3"
                   />
                   <input
                     type="number"
                     onChange={handleMaxPriceChange}
                     placeholder="Max"
-                    className="w-1/2 border-gray-400 border rounded-md py-2 px-3 mb-3"
+                    className="w-1/2 border-gray-400 border rounded-md py-2 px-3"
                   />
                 </div>
-                {/*<button
-
-                                    className="block bg-gradient-to-r from-green-500 to-cyan-500 hover:bg-gradient-to-r hover:from-green-400 hover:to-cyan-400 text-white font-medium rounded-md py-2 px-4 mt-4"
-                                >
-                                    Filter Jobs
-                        </button> */}
               </div>
             </div>
 
-            <div className="w-1/2 flex flex-col items-center justify-center">
-              <div className="mt-8 p-10 w-full rounded-lg shadow-lg bg-emerald-100">
-                <div class="flex flex-col">
-                  <div class="flex flex-wrap mb-5">
-                    <FaSearch className="text-3xl text-green-600" />
+            <div className="w-1/2 flex flex-col items-center justify-center px-3">
+              <div className="mt-8 p-10 w-full rounded-lg shadow-lg bg-gradient-to-r from-green-500 to-cyan-500">
+                <div className="flex flex-col">
+                  <div className="flex flex-wrap mb-5 justify-center">
+                    <FaSearch className="text-3xl text-black mx-2" />
+                    <h1 className="text-black font-bold text-2xl">
+                      Search By Keywords
+                    </h1>
                   </div>
 
                   <div className="flex items-center justify-center">
@@ -162,10 +161,8 @@ const Search_Results = () => {
                       type="text"
                       onChange={handleSearch}
                       placeholder="Type here to start searching"
-                      class="w-4/5 rounded-md border border-gray-400 px-4 py-2 focus:border-green-600 focus:outline-none focus:ring"
+                      className="w-4/5 rounded-md border border-gray-400 px-4 py-2 focus:border-black focus:outline-none focus:ring"
                     />
-                    {/*<button class="rounded-r-md bg-emerald-500 px-4 py-2 text-white hover:bg-teal-700 focus:border-green-600 focus:outline-none focus:ring">Search</button>
-                     */}
                   </div>
                 </div>
               </div>
@@ -240,15 +237,21 @@ const Search_Results = () => {
                 )}
               </div>
             </div>
-            <div className="w-1/4 flex items-start justify-center">
+
+            <div className="w-1/4 flex items-start justify-center pl-3 mr-3">
               <div className="w-full max-w-md mx-auto rounded-md shadow-md overflow-hidden">
-                <div className="px-6 py-4 bg-white">
-                  <div className="flex items-center">
-                    <span className="font-bold mb-4">Trending Keywords</span>
+                <div className="px-6 py-4 bg-gradient-to-r from-green-500 to-cyan-500">
+                  <div className="flex items-center justify-center">
+                    <span className="font-bold text-xl text-black mb-4">
+                      Trending Keywords
+                    </span>
                   </div>
-                  <div className="flex flex-wrap -mx-2 mt-4">
+                  <div className="flex flex-wrap justify-center -mx-2 mt-4">
                     {freqKeywordsNames.map((keyword) => (
-                      <div className="px-2 py-1 mb-2 mr-2 rounded-md bg-green-100 text-blue-800">
+                      <div
+                        key={keyword}
+                        className="px-2 py-1 mb-2 mr-2 rounded-md bg-gray-800 text-white hover:bg-gray-700 focus:bg-gray-700"
+                      >
                         <button
                           onClick={handleKeywordClick}
                           value={keyword}

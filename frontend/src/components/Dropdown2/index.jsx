@@ -64,7 +64,7 @@ function Dropdown() {
             Job
           </Link>
           <a
-            href="#"
+            href="/post_internship"
             className={`block px-4 py-2 text-sm font-semibold ${
               location.pathname === "/internship" ? "text-blue-700" : "text-gray-700"
             } hover:bg-emerald-600 hover:text-white`}

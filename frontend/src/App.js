@@ -14,6 +14,8 @@ import PasswordReset from "./components/PasswordReset";
 import MyJobs from "./components/MyJobs";
 import Post_Resources from "./components/Post_Resources"
 import Resources from "./components/Resources"
+import Post_Internship from "./components/Post_Internship"
+import Internship from "./components/Internship"
 function App() {
   const user = localStorage.getItem('token');
   return (
@@ -27,6 +29,9 @@ function App() {
       {user && <Route path = "/search_results" exact element={<Search_Results/>}/>}
       {user && <Route path = "/post_resources" exact element={<Post_Resources/>}/>}
       {user && <Route path = "/resources" exact element={<Resources/>}/>}
+      {user && <Route path = "/post_internship" exact element={<Post_Internship/>}/>}
+      {user && <Route path = "/internship" exact element={<Internship/>}/>}
+      
       <Route path ="/login" exact element={<Login/>}/>
       <Route path ="/signup" exact element={<Signup/>}/>
       
