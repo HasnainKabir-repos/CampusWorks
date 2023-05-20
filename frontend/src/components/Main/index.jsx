@@ -145,7 +145,7 @@ const Main = () => {
                 <div className="flex items-center justify-center rounded-full w-16 h-16 bg-gradient-to-r from-green-500 to-cyan-500 text-black mb-6">
                   <FaPlus className="text-2xl" />
                 </div>
-                <h2 className="text-2xl font-bold mb-2">Post New Work</h2>
+                <h2 className="text-2xl font-bold mb-2">Post New Job</h2>
                 <p className="text-gray-600 text-center mb-6">
                   Share your latest Jobs that you want to get done by your peers <br/>
                   Have Impact on them and help them to grow.
@@ -155,7 +155,7 @@ const Main = () => {
                   className="flex items-center mr-2 bg-gradient-to-r from-green-500 to-cyan-500 text-black font-semibold rounded-lg px-8 py-4 hover:bg-green-600 focus:outline-none focus:ring focus:border-green-500"
                 >
                   <FaPlus className="mr-2" />
-                  Post Work
+                  Post Job
                 </Link>
               </div>
             </div>

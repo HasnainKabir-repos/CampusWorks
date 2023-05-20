@@ -134,13 +134,15 @@ const Post_Resources = () => {
                         </div>
                       )}
                     </div>
-
-                    <button
-                      type="submit"
-                      class="text-white bg-cyan-900 hover:bg-teal-700 focus:ring-4 focus:outline-none focus:ring-green-500 font-medium rounded-lg text-m w-full sm:w-auto px-10 py-1.5 text-center mx-auto border-solid transform translate-y-1 transition-all duration-300"
-                    >
-                      Post Resource
-                    </button>
+                    <div class="flex justify-center">
+                      <button
+                        type="submit"
+                        className="text-white bg-cyan-900 hover:bg-teal-700 focus:ring-4 focus:outline-none focus:ring-green-500 font-medium rounded-lg text-m w-full sm:w-auto px-10 py-1.5 text-center mx-auto border-solid transform translate-y-1 transition-all duration-300"
+                        style={{ width: "300px" }}
+                      >
+                        Post Resource
+                      </button>
+                    </div>
                   </form>
                 </div>
               </div>

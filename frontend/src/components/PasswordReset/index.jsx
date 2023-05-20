@@ -66,10 +66,24 @@ const PasswordReset = () => {
               type="submit"
               className={
                 "border-none outline-none py-3 px-4 hover:shadow-xl hover:shadow-black-100 " +
-                "text-black font-bold rounded-md w-48 font-small text-base cursor-pointer font-poppins " +
-                "shadow-md my-4 bg-teal-400"
+                "text-black rounded-md w-370 font-medium text-base cursor-pointer font-poppins " +
+                "shadow-md my-4 bg-gradient-to-r from-green-500 to-cyan-500"
               }
-              style={{ backgroundColor: "#4FFFB0", fontWeight: 500 }}
+              style={{
+                width: "370px",
+                backgroundImage: "linear-gradient(to right, #31D274, #79D4CF)",
+                transition: "background-color 0.3s",
+              }}
+              onMouseOver={(e) =>
+                (e.currentTarget.style.backgroundImage =
+                  "linear-gradient(to right,#48BB78, #38B2AC)")
+              }
+              onMouseOut={(e) =>
+                (e.currentTarget.style.backgroundImage =
+                  "linear-gradient(to right,#31D274, #79D4CF)")
+              }
+              onMouseDown={(e) => (e.currentTarget.style.opacity = "0.8")}
+              onMouseUp={(e) => (e.currentTarget.style.opacity = "1")}
             >
               Set As New Password
             </button>

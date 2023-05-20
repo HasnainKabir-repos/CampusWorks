@@ -92,6 +92,7 @@ const Post_job = () => {
               </div>
             </div>
 
+
             {/* Middle Section */}
             <div className="w-1/2 flex items-center justify-center rounded-lg shadow-lg border-2 bg-white mx-2 mb-3">
               <div className="rounded-lg w-full">
