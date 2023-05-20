@@ -168,7 +168,7 @@ const Main = () => {
               </div>
 
               <div class="flex flex-wrap ">
-                  <div className="bg-white rounded-md shadow-md p-6 max-w-sm mx-auto flex items-center justify-center">
+                  <div className="bg-white p-6 max-w-sm mx-auto flex items-center justify-center">
                     <div className="flex flex-col items-center justify-center ">
                       <div className="mb-2"><FaEnvelope size="42" color="green" /></div>
                       <div> 
