@@ -2,11 +2,23 @@ import TopBar from "../TopBar";
 import axios from 'axios';
 import { useState, useEffect } from "react";
 import Footer from "../Footer";
+import Send_Proposal from "../Send_Proposal";
+
 const Jobs = () =>{
 
     const [jobs, setJobs] = useState([]);
     const [currentUser, setCurrentUser] = useState("");
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [thisJob, setThisJob] = useState("");
 
+    const handleModalOpen = (job) =>{
+        setThisJob(job);
+        setIsModalOpen(true);
+    }
+
+    const handleCloseModal = () =>{
+        setIsModalOpen(false);
+    }
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -82,13 +94,18 @@ const Jobs = () =>{
                             type="submit" 
                             className="block mt-4 w-full md:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-green-500 to-cyan-500 hover:bg-gradient-to-r hover:from-green-400 hover:to-cyan-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 shadow-sm"
                             disabled={job.userEmail === currentUser}
+                            onClick={() =>handleModalOpen(job)}
                             >
                             {job.userEmail === currentUser ? "Job Posted by You" : "Apply Now"}
                             </button>
                         </div>
-                        
+                        {isModalOpen && (
+                            <Send_Proposal jobs = {thisJob} onClose = {handleCloseModal} />
+                        )}
                     </div>
                     ))}
+
+                    
                 </div>
                 </div>
 

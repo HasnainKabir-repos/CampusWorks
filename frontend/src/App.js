@@ -12,7 +12,10 @@ import EmailVerify from './components/EmailVerify';
 import ForgotPassword from './components/ForgotPassword';
 import PasswordReset from "./components/PasswordReset";
 import MyJobs from "./components/MyJobs";
-import Payment from "./components/Payment"
+import Post_Resources from "./components/Post_Resources"
+import Resources from "./components/Resources"
+import Post_Internship from "./components/Post_Internship"
+import Internship from "./components/Internship"
 function App() {
   const user = localStorage.getItem('token');
   return (
@@ -24,7 +27,11 @@ function App() {
       {user && <Route path = "/postjob" exact element={<Post_job/>}/>}
       {user && <Route path = "/myjobs" exact element={<MyJobs/>}/>}
       {user && <Route path = "/search_results" exact element={<Search_Results/>}/>}
-      {user && <Route path = "/payment" exact element={<Payment/>}/>}
+      {user && <Route path = "/post_resources" exact element={<Post_Resources/>}/>}
+      {user && <Route path = "/resources" exact element={<Resources/>}/>}
+      {user && <Route path = "/post_internship" exact element={<Post_Internship/>}/>}
+      {user && <Route path = "/internship" exact element={<Internship/>}/>}
+      
       <Route path ="/login" exact element={<Login/>}/>
       <Route path ="/signup" exact element={<Signup/>}/>
       
@@ -40,9 +47,12 @@ function App() {
       <Route path="/profile" exact element={<Navigate replace to="/login"/>}/>
       <Route path="/jobs" exact element={<Navigate replace to="/login"/>}/>
       <Route path="/chat" element={user ? <Chat /> : <Navigate to="../login" />}/>
+      <Route path="/resources" exact element={<Navigate replace to="/login"/>}/>
+      <Route path="/post_resources" exact element={<Navigate replace to="/login"/>}/>
       <Route path="/users/:id/verify/:token" element={<EmailVerify/>}/>
       <Route path="/forgot-password" element={<ForgotPassword/>}/>
       <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
+
 
     </Routes>
   );

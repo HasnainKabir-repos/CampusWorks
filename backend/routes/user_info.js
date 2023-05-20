@@ -33,4 +33,15 @@ router.get('/', authenticate, async (req, res) => {
   }
 });
 
+router.get('/find',  async (req, res) => {
+  try {
+    const { email} = req.query;
+    const user = await User.findOne({email: email});
+    return res.json(user);
+  } catch (error) {
+    return res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+
 module.exports = router;

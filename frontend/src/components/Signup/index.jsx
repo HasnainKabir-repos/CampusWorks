@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
@@ -13,7 +13,16 @@ const Signup = () => {
     department: "",
   });
   const [error, setError] = useState("");
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (showModal) {
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
+    }
+  }, [showModal, navigate]);
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
@@ -24,7 +33,7 @@ const Signup = () => {
     try {
       const url = "http://localhost:8080/api/users";
       const { data: res } = await axios.post(url, data);
-      navigate("/login");
+      setShowModal(true);
       console.log(res.message);
     } catch (error) {
       if (
@@ -33,6 +42,9 @@ const Signup = () => {
         error.response.status <= 500
       ) {
         setError(error.response.data.message);
+        setTimeout(() => {
+          setError("");
+        }, 2000);
       }
     }
   };
@@ -203,14 +215,39 @@ const Signup = () => {
               </select>
             </div>
             {error && <div className={styles.error_msg}>{error}</div>}
+            {showModal && (
+              <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                <div className="bg-gradient-to-r from-green-500 to-cyan-500 p-8 rounded-md">
+                  <p className="text-lg font-semibold text-black text-center">
+                    Registration successful!
+                  </p>
+                  <p className="text-center">Redirecting to login page...</p>
+                </div>
+              </div>
+            )}
+
             <button
               type="submit"
               className={
                 "border-none outline-none py-3 px-4 hover:shadow-xl hover:shadow-black-100 " +
-                "text-black rounded-md w-48 font-medium text-base cursor-pointer font-poppins " +
-                "shadow-md my-4 bg-teal-400"
+                "text-black rounded-md w-370 font-medium text-base cursor-pointer font-poppins " +
+                "shadow-md my-4 bg-gradient-to-r from-green-500 to-cyan-500"
               }
-              style={{ backgroundColor: "#4FFFB0" }}
+              style={{
+                width: "370px",
+                backgroundImage: "linear-gradient(to right, #31D274, #79D4CF)",
+                transition: "background-color 0.3s",
+              }}
+              onMouseOver={(e) =>
+                (e.currentTarget.style.backgroundImage =
+                  "linear-gradient(to right,#48BB78, #38B2AC)")
+              }
+              onMouseOut={(e) =>
+                (e.currentTarget.style.backgroundImage =
+                  "linear-gradient(to right,#31D274, #79D4CF)")
+              }
+              onMouseDown={(e) => (e.currentTarget.style.opacity = "0.8")}
+              onMouseUp={(e) => (e.currentTarget.style.opacity = "1")}
             >
               Sign Up
             </button>

@@ -31,4 +31,14 @@ router.get('/' , authenticate, async (req, res) =>{
     }
 });
 
+router.get('/userposted', async (req, res) => {
+    try{
+      const { email} = req.query;
+      const username = await User.findOne({email: email}).select({name:1, _id:0});
+      return res.json(username);
+    }catch(error){
+      return res.status(500).json({message: "Error retrieving the name of user who posted"});
+    }
+});
+
 module.exports = router;

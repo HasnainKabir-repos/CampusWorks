@@ -1,24 +1,45 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 function Dropdown() {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  const location = useLocation();
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside, true);
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  }, []);
 
   return (
-    <div className="relative inline-block text-left">
+    <div className="relative inline-block text-left" ref={dropdownRef}>
       <button
         type="button"
-        onClick={toggleMenu}
-        className="inline-flex justify-center items-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 border-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-green-500"
+        onClick={handleClick}
+        className={`inline-flex justify-center items-center w-full px-4 py-2 text-sm font-medium ${
+          location.pathname.includes("/postjob") ? "text-blue-700" : "text-gray-700"
+        } bg-white border border-gray-300 rounded-lg hover:bg-gray-100 border-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-green-500`}
         id="menu-button"
-        aria-expanded="true"
+        aria-expanded={isOpen ? "true" : "false"}
         aria-haspopup="true"
       >
         Create
         <svg
-          className="-mr-1 ml-2 h-5 w-5 text-gray-500"
+          className={`-mr-1 ml-2 h-5 w-5 text-gray-500 transform ${
+            isOpen ? "rotate-180" : ""
+          }`}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
@@ -31,26 +52,29 @@ function Dropdown() {
           />
         </svg>
       </button>
-      <div
-        className={`${
-          isOpen ? "block" : "hidden"
-        } absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5`}
-      >
-        <Link
-          to="/postjob"
-          className="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-600 hover:text-white"
-          
-        >
-          Job
-        </Link>
-        <a
-          href="#"
-          className="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-600 hover:text-white"
-          role="menuitem"
-        >
-          Internship
-        </a>
-      </div>
+      {isOpen && (
+        <div className="absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+          <Link
+            to="/postjob"
+            className={`block px-4 py-2 text-sm font-semibold ${
+              location.pathname === "/postjob" ? "text-blue-700" : "text-gray-700"
+            } hover:bg-emerald-600 hover:text-white`}
+            onClick={handleClick}
+          >
+            Job
+          </Link>
+          <a
+            href="/post_internship"
+            className={`block px-4 py-2 text-sm font-semibold ${
+              location.pathname === "/internship" ? "text-blue-700" : "text-gray-700"
+            } hover:bg-emerald-600 hover:text-white`}
+            role="menuitem"
+            onClick={handleClick}
+          >
+            Internship
+          </a>
+        </div>
+      )}
     </div>
   );
 }

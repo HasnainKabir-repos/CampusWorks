@@ -34,23 +34,23 @@ const Profile = () => {
       .get("http://localhost:8080/api/userProfile", config)
       .then((response) => {
         //setUserProfile(response.data);
-        if(response.data.Bio){
-            setIsBio(true);
+        if (response.data.Bio) {
+          setIsBio(true);
         }
-        if(response.data.Result){
-            setIsResult(true);
+        if (response.data.Result) {
+          setIsResult(true);
         }
-        if(response.data.Strength){
-            setIsStrength(true);
+        if (response.data.Strength) {
+          setIsStrength(true);
         }
-        if(response.data.Experience){
-            setIsExperience(true);
+        if (response.data.Experience) {
+          setIsExperience(true);
         }
-        if(response.data.Education){
-            setIsEducation(true);
+        if (response.data.Education) {
+          setIsEducation(true);
         }
-        if(response.data.Achievements){
-            setIsAchievements(true);
+        if (response.data.Achievements) {
+          setIsAchievements(true);
         }
         setUserProfile(response.data);
       })
@@ -60,20 +60,25 @@ const Profile = () => {
   }, []);
 
   return (
-    <div className="bg-gray-100 h-full w-full flex flex-col">
+    <div className="bg-gray-100 h-full w-full flex-col px-10">
       <TopBar />
-      
-      <div className="max-w-md mx-auto min-h-screen mt-20">
-      <div className="bg-gradient-to-r from-green-500 to-cyan-500 py-4 text-center text-white font-bold">
-        <h1 className="text-xl">Welcome to Your Profile Page, {userInfo.name}!</h1>
-      </div>
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden p-5 flex flex-col items-center">
+
+      <div className="max-w-3xl mx-auto min-h-screen mt-20 py-5">
+        <div className="bg-gradient-to-r from-green-500 to-cyan-500 py-4 text-center text-black rounded-lg font-bold">
+          <h1 className="text-xl px-6">
+            Welcome to Your Profile Page <br />
+            {userInfo.name}!
+          </h1>
+        </div>
+
+        <div className="rounded-lg overflow-hidden mt-4">
+        <div className="bg-white rounded-lg shadow-lg overflow-hidden p-5 flex flex-col items-center mb-3">
   {userProfile.photo ? (
-    <img
-      src={`http://localhost:8080/api/images/${userProfile.photo}`}
-      alt="avatar"
-      className="w-32 h-32 rounded-full mb-5"
-    />
+      <img
+        src={`http://localhost:8080/api/images/${userProfile.photo}`}
+        alt="avatar"
+        className="w-32 h-32 rounded-full mb-5"
+      />
   ) : (
     <img
       src={avatar}// Replace with the path to your default avatar image
@@ -82,41 +87,55 @@ const Profile = () => {
     />
   )}
 
+            <h1 className="text-2xl font-medium mb-2">{userInfo.name}</h1>
+          </div>
 
-          <h1 className="text-2xl font-medium mb-2">{userInfo.name}</h1>
-          <p className="text-gray-600 mb-1">Email: {userInfo.email}</p>
-          <p className="text-gray-600 mb-1">Department: {userInfo.department}</p>
-          <p className="text-gray-600 mb-1">Batch: {userInfo.batch}</p>
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden p-5 flex flex-col items-left mb-3">
+            <p className="text-gray-800 font-semibold mb-1">Email: {userInfo.email}</p>
+            <p className="text-gray-800 font-semibold mb-1">
+              Department: {userInfo.department}
+            </p>
+            <p className="text-gray-800 font-semibold mb-1">Batch: {userInfo.batch}</p>
 
             {isBio && (
-                <p className="text-gray-600 mb-1">Bio: {userProfile.Bio}</p>
+              <p className="text-gray-800 font-semibold mb-1">Bio: {userProfile.Bio}</p>
             )}
 
             {isResult && (
-                <p className="text-gray-600 mb-1">Result: {userProfile.Result}</p>
+              <p className="text-gray-800 font-semibold mb-1">Result: {userProfile.Result}</p>
             )}
 
             {isStrength && (
-                <p className="text-gray-600 mb-1">Strength: {userProfile.Strength}</p>
+              <p className="text-gray-800 font-semibold mb-1">
+                Strength: {userProfile.Strength}
+              </p>
             )}
 
             {isExperience && (
-                <p className="text-gray-600 mb-1">Experience: {userProfile.Experience}</p>
+              <p className="text-gray-800 font-semibold mb-1">
+                Experience: {userProfile.Experience}
+              </p>
             )}
 
             {isEducation && (
-                <p className="text-gray-600 mb-1">Education: {userProfile.Education}</p>
+              <p className="text-gray-800 font-semibold mb-1">
+                Education: {userProfile.Education}
+              </p>
             )}
 
             {isAchievements && (
-                <p className="text-gray-600 mb-1">Acheivements: {userProfile.Achievements}</p>
+              <p className="text-gray-800 font-semibold mb-1">
+                Achievements: {userProfile.Achievements}
+              </p>
             )}
-          <Link
-            to="/EditProfile"
-            className="rounded-md bg-emerald-500 px-4 py-2 text-white hover:bg-teal-700 focus:border-green-600 focus:outline-none focus:ring mt-4"
-          >
-            Edit Profile
-          </Link>
+
+            <Link
+              to="/EditProfile"
+              className="rounded-md bg-gradient-to-r from-green-500 to-cyan-500 px-4 py-2 text-black text-center font-bold hover:bg-teal-700 focus:border-green-600 focus:outline-none focus:ring mt-4"
+            >
+              Edit Profile
+            </Link>
+          </div>
         </div>
       </div>
 

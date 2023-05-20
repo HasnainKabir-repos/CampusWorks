@@ -18,6 +18,9 @@ const jobRoutes = require('./routes/jobs');
 const MessageRoute = require('./routes/MessageRoute');
 const ChatRoute = require('./routes/ChatRoute');
 const userName = require('./routes/getUsername');
+const resourcesRoutes = require('./routes/resources');
+const Proposal = require('./routes/proposal');
+const internshipRoutes = require('./routes/internships');
 
 
 //database connection
@@ -38,10 +41,18 @@ app.use('/api/userProfile', UserProfileRoutes);
 app.use('/api/password-reset', passwordResetRoutes);
 app.use('/api/myjobs', myjobsRoutes);
 app.use('/api/getcurrentuser', getCurrentUserRoutes);
+app.use('/api/internships', internshipRoutes);
+
 app.use('/api/getcurrentuserID', getCurrentUserIDRoutes);
 app.use('/api/getuser', getUserRoutes);
 app.use('/api/images', express.static(path.join(__dirname,'images')));
 
 app.use('/api/getUsername', userName)
+
+app.use('/api/getUsername', userName);
+app.use('/api/resources', resourcesRoutes);
+
+app.use('/api/proposal', Proposal);
+
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Listening on port ${port}...`))
