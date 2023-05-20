@@ -131,6 +131,9 @@ const Resources = () => {
                 <option value="Mechanical Engineering">
                   Mechanical Engineering
                 </option>
+                <option value="Business and Management">
+                  Business and Management
+                </option>
                 <option value="Others">Others</option>
               </select>
             </div>
