@@ -135,12 +135,11 @@ const Resources = () => {
               </select>
             </div>
             <button
-  onClick={handleSearch}
-  className="w-full py-2.5 px-4 text-md font-semibold text-black bg-green-500 hover:bg-green-600 active:bg-green-700 rounded-md focus:outline-none"
->
-  Search
-</button>
-
+              onClick={handleSearch}
+              className="w-full py-2.5 px-4 text-md font-semibold text-black bg-green-500 hover:bg-green-600 active:bg-green-700 rounded-md focus:outline-none"
+            >
+              Search
+            </button>
           </div>
           <div className="w-full md:w-3/4 px-4 py-4">
             <div className="flex-col items-center justify-center">
