@@ -151,11 +151,11 @@ const Resources = () => {
                   >
                     <div className="flex flex-col">
                       <div className="flex items-center mb-2">
-                        <p className="font-bold text-gray-600 mr-2">
+                        <p className="font-bold text-xl text-blue-600 mr-2">
                           {resource.userName}
                         </p>
-                        <p className="text-blue-400 font-semibold">
-                          posted at {formatDate(resource.datePosted)}
+                        <p className="text-gray-600 font-semibold">
+                          Posted at {formatDate(resource.datePosted)}
                         </p>
                       </div>
                       <h2 className="font-bold text-xl mb-2">

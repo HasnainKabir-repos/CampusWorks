@@ -58,8 +58,8 @@ const Jobs = () =>{
             <div class = "flex flex-col">
 
                 <div className="flex min-w-screen items-center justify-center bg-gradient-to-r from-green-500 to-cyan-500 h-36">
-                    <h1 className="font-roboto text-white text-4xl font-bold animate-pulse">
-                        {jobs.length} jobs and counting!
+                    <h1 className="font-poppins text-black text-4xl font-bold animate-pulse">
+                        {jobs.length} Jobs and Counting!
                         <span className="animate-bounce ml-2">🚀</span>
                     </h1>
                 </div>
