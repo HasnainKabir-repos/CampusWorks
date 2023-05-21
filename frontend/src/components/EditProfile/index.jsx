@@ -17,6 +17,7 @@ const EditProfile = () => {
   const [error, setError] = useState("");
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [userProfile, setUserProfile] = useState({});
+  const [previousPhoto, setPreviousPhoto] = useState('');
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -40,19 +41,27 @@ const EditProfile = () => {
   }, []);
 
   const handleChange = ({ target }) => {
-    setData((prevData) => ({ ...prevData, [target.name]: target.value }));
+    const { name, value } = target;
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value || userProfile[name], // Use previous value if current value is empty
+    }));
   };
 
   const handlePhoto = ({ target }) => {
     const file = target.files[0];
     setData((prevData) => {
       if (file) {
+        setPreviousPhoto(prevData.photo || userProfile.photo);
         return {
           ...prevData,
           photo: file,
         };
       } else {
-        return prevData;
+        return {
+          ...prevData,
+          photo: null,
+        };
       }
     });
   };
@@ -75,16 +84,16 @@ const EditProfile = () => {
     formData.append("Experience", data.Experience || userProfile.Experience);
 
     if (data.photo) {
-      formData.append("photo", data.photo);
-    } else if (userProfile.photo) {
-      formData.append("photo", userProfile.photo);
+      formData.append('photo', data.photo);
+    } else {
+      formData.append('photo', previousPhoto);
     }
 
     const response = await axios.post(url, formData, config);
     setIsModalVisible(true);
     setTimeout(() => {
       setIsModalVisible(false);
-      window.location.reload(); // Refresh the page
+      window.location.href = `http://localhost:3000/profile`; // Refresh the page
     }, 1500);
   } catch (error) {
     if (

@@ -148,7 +148,7 @@ const Chat = () => {
                 <h1 className='text-white font-bold text-lg'>Open Conversation</h1>
               </div>
               {conversations.map((c) => (
-                    <div onClick={() => setCurrentChat(c)}>
+                    <div onClick={() => setCurrentChat(c)} className='hover:bg-emerald-700 hover:text-white'>
                       <Conversation conversation={c} currentUser={currentUser} />
                       </div>
                   ))}
@@ -163,7 +163,7 @@ const Chat = () => {
             {currentChat?
             <>
             <div className=' pl-3 pt-3 py-1 bg-emerald-600 '>
-              <h1 className='text-white font-bold text-lg'>Mamun</h1>
+              <h1 className='text-white font-bold text-lg'><Conversation conversation={currentChat} currentUser={currentUser} /></h1>
             </div>
           <div className="chatBoxTop overflow-auto ">
           {messages.map((m) => (

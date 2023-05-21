@@ -12,13 +12,19 @@ const storage = multer.diskStorage({
     cb(null, 'images');
   },
   filename: function (req, file, cb) {
-    cb(null, uuidv4() + '-' + Date.now() + path.extname(file.originalname));
+    if (file) {
+      cb(null, uuidv4() + '-' + Date.now() + path.extname(file.originalname));
+    } else {
+      // Use the previous picture's filename
+      const previousFilename = req.file ? req.file.filename : ''; // Assuming the previous photo filename is stored in req.file.filename
+      cb(null, previousFilename);
+    }
   }
 });
 
 const fileFilter = (req, file, cb) => {
   const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-  if (allowedFileTypes.includes(file.mimetype)) {
+  if (allowedFileTypes.includes(file.mimetype) || !file) {
     cb(null, true);
   } else {
     cb(new Error('Invalid file type'));
@@ -26,6 +32,7 @@ const fileFilter = (req, file, cb) => {
 }
 
 let upload = multer({ storage, fileFilter });
+
 
 const authenticate = async (req, res, next) => {
   try {

@@ -10,6 +10,28 @@ import axios from "axios";
 import { FaUserFriends, FaBriefcase, FaSearch } from "react-icons/fa";
 const Main = () => {
   const [userInfo, setUserInfo] = useState({});
+  const [userProfile, setUserProfile] = useState({});
+
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const config = {
+          headers: { Authorization: `Bearer ${token}` },
+        };
+
+        const response = await axios.get(
+          "http://localhost:8080/api/userProfile",
+          config
+        );
+        setUserProfile(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchUserProfile();
+  }, []);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -65,7 +87,19 @@ const Main = () => {
               <div class="flex flex-wrap items-center justify-center">
                 <div class="flex flex-col">
                   <div class="flex flex-wrap items-center justify-center px-5 py-5">
-                    <img src={avatar} width="50" height="50" alt="avatar" />
+                  {userProfile.photo ? (
+              <img
+                src={`http://localhost:8080/api/images/${userProfile.photo}`}
+                alt="avatar"
+                className="w-32 h-32 rounded-full mb-5"
+              />
+            ) : (
+              <img
+                src={avatar}
+                alt="default-avatar"
+                className="w-32 h-32 rounded-full mb-5"
+              />
+            )}
                   </div>
 
                   <div class="flex flex-wrap items-center justify-center px-5 py-1">
@@ -173,7 +207,7 @@ const Main = () => {
                       <div className="mb-2"><FaEnvelope size="42" color="green" /></div>
                       <div> 
                         <div className="flex justify-end">
-                    <Link to="/inbox">
+                    <Link to="/chat">
                       <button className="bg-gradient-to-r from-green-500 to-cyan-500 p-8 text-black hover:bg-green-600  font-semibold py-2 px-4 rounded">
                         Click here to view your inbox
                       </button>
