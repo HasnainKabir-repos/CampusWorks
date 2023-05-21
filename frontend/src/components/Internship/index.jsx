@@ -56,7 +56,7 @@ const Internship = () => {
   } else {
     const remainingDays = Math.floor(hoursDifference / 24);
     const remainingHours = hoursDifference % 24;
-    daysRemaining = `Time Remaining | ${remainingDays} Day(s) ${remainingHours} Hour(s)`;
+    daysRemaining = `Time Remaining To Apply | ${remainingDays} Day(s) ${remainingHours} Hour(s)`;
   }
 
   return {

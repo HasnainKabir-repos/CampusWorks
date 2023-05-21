@@ -173,7 +173,7 @@ const Main = () => {
                       <div className="mb-2"><FaEnvelope size="42" color="green" /></div>
                       <div> 
                         <div className="flex justify-end">
-                    <Link to="/inbox">
+                    <Link to="/Chat">
                       <button className="bg-gradient-to-r from-green-500 to-cyan-500 p-8 text-black hover:bg-green-600  font-semibold py-2 px-4 rounded">
                         Click here to view your inbox
                       </button>

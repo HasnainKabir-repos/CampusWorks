@@ -254,7 +254,7 @@ const Post_Internship = () => {
                     </svg>
                     <span className="sr-only">Success</span>
                   </div>
-                  <p class="mb-4 text-lg font-semibold text-white ">
+                  <p class="mb-4 text-lg font-semibold text-black ">
                     Internship Posted Successfully.
                   </p>
                   <button
