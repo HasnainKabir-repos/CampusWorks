@@ -1,12 +1,5 @@
-.messenger {
-    height: calc(100vh - 70px);
-    margin-top: 100px;
-    display: flex;
-  }
-  
-  .chatMenu {
-    flex: 3.5;
-  }
+
+
 
   .chatMenuInput {
     width: 90%;
@@ -42,12 +35,7 @@
     align-items: center;
     justify-content: space-between;
   }
-  .chatMessageInput {
-    width: 60%;
-    height: 90px;
-    padding: 10px;
-  }
-  
+
   .chatSubmitButton {
     width: 70px;
     height: 40px;
