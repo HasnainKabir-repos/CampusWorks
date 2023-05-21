@@ -60,4 +60,13 @@ router.post('/accept', async(req, res) =>{
     }
 });
 
+router.post('/getproposalsbyemail', async(req, res) =>{
+  try {
+      const proposals = await Proposals.find({senderEmail: req.body.email}).sort({date: -1});
+      return res.json(proposals);
+    } catch (error) {
+      return res.status(500).json({ message: 'Error retrieving proposals', error: error });
+    }
+});
+
 module.exports = router;

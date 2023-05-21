@@ -144,14 +144,16 @@ const Chat = () => {
           <div className="flex w-1/4">
             <div className="chatMenu w-full h-screen  bg-gray-200">
               <div className="chatMenuWrapper ">
-                <div className="pl-3 py-1 pt-3 h-14 bg-gradient-to-r from-emerald-700 to-cyan-600 ">
-                  <h1 className="text-white font-bold text-lg">
-                    Open Conversation
-                  </h1>
-                </div>
-                {conversations.map((c) => (
-                  <div onClick={() => setCurrentChat(c)}>
-                    <Conversation conversation={c} currentUser={currentUser} />
+
+              <div className='pl-3 py-1 pt-3 h-14 bg-gradient-to-r from-emerald-700 to-cyan-600 '>
+                <h1 className='text-white font-bold text-lg'>Open Conversation</h1>
+              </div>
+              {conversations.map((c) => (
+                    <div onClick={() => setCurrentChat(c)} className='hover:bg-emerald-700 hover:text-white'>
+                      <Conversation conversation={c} currentUser={currentUser} />
+                      </div>
+                  ))}
+
                   </div>
                 ))}
               </div>
@@ -164,7 +166,7 @@ const Chat = () => {
                 {currentChat ? (
                   <>
                     <div className=" pl-3 pt-3 py-1 bg-emerald-600 ">
-                      <h1 className="text-white font-bold text-lg">Mamun</h1>
+                      <h1 className="text-white font-bold text-lg"><Conversation conversation={currentChat} currentUser={currentUser}</h1>
                     </div>
                     <div className="chatBoxTop overflow-auto ">
                       {messages.map((m) => (
@@ -197,6 +199,7 @@ const Chat = () => {
                   </span>
                 )}
               </div>
+
             </div>
           </div>
 
