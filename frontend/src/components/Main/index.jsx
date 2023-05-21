@@ -79,7 +79,7 @@ const Main = () => {
 
         <div className="flex flex-row items-center justify-center flex-wrap py-1 -mt-9">
         <div className="flex-1 m-2 py-1">
-            <div class="rounded-xl bg-white shadow-lg ">
+            <div class="rounded-xl bg-white shadow-lg">
               <div class="flex flex-wrap items-center justify-center w-full px-3 pt-3 bg-gradient-to-r from-green-500 to-cyan-500">
                 <h2 class="font-poppins mb-4 text-lg font-bold text-black">Your Profile</h2>
               </div>
@@ -197,17 +197,19 @@ const Main = () => {
 
            <div className="flex-1 m-2 mx-2">
             <div class="rounded-xl bg-white shadow-lg">
-              <div class="flex flex-wrap w-full px-3 pt-3 bg-emerald-500">
-                <h2 class="mb-4 text-lg font-medium text-white">Inbox</h2>
+              <div class="flex flex-wrap w-full px-3 pt-3 bg-gradient-to-r from-green-500 to-cyan-500 justify-center">
+                <h2 class="mb-4 text-lg font-bold text-black text-center">Inbox</h2>
               </div>
 
               <div class="flex flex-wrap ">
-                  <div className="bg-white p-6 max-w-sm mx-auto flex items-center justify-center">
+                  <div className="bg-white p-6 max-w-sm mx-auto flex items-center justify-center rounded-lg">
                     <div className="flex flex-col items-center justify-center ">
                       <div className="mb-2"><FaEnvelope size="42" color="green" /></div>
                       <div> 
                         <div className="flex justify-end">
+
                     <Link to="/chat">
+
                       <button className="bg-gradient-to-r from-green-500 to-cyan-500 p-8 text-black hover:bg-green-600  font-semibold py-2 px-4 rounded">
                         Click here to view your inbox
                       </button>

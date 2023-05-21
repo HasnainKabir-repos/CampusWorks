@@ -34,7 +34,7 @@ router.post("/", authenticate, async (req, res) => {
       companyName: req.body.companyName,
       internshipDomain: req.body.internshipDomain,
       applyMedium: req.body.applyMedium,
-      lastDateToApply: new Date(req.body.lastDateToApply), // Convert string to Date object
+      lastDateToApply: new Date(req.body.lastDateToApply),
       description: req.body.description,
     });
 

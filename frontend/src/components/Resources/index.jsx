@@ -165,7 +165,7 @@ const Resources = () => {
                         {resource.resourceName}
                       </h2>
                       <div className="inline-block mb-2">
-                        <div className="rounded-full bg-cyan-900 text-white px-2 py-1 text-sm inline-flex items-center">
+                        <div className="rounded bg-cyan-900 text-white px-2 py-1 text-sm inline-flex items-center">
                           <span className="whitespace-no-wrap">
                             {resource.resourceDomain}
                           </span>

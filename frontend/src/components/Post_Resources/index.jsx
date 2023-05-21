@@ -192,7 +192,7 @@ const Post_Resources = () => {
                     </svg>
                     <span className="sr-only">Success</span>
                   </div>
-                  <p class="mb-4 text-lg font-semibold text-white ">
+                  <p class="mb-4 text-lg font-semibold text-black ">
                     Resource Posted Successfully.
                   </p>
                   <button
