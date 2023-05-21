@@ -26,4 +26,20 @@ router.post("/", async (req, res) => {
     }
   });
 
+  router.get("/", async (req, res) => {
+    try {
+      const senderId = req.query.senderId;
+      const receiverId = req.query.receiverId;
+  
+      // Find conversation(s) where both senderId and receiverId are members
+      const conversation = await Chat.find({
+        members: { $all: [senderId, receiverId] },
+      });
+  
+      res.status(200).json(conversation);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+
 module.exports = router;

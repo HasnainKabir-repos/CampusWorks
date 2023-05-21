@@ -6,17 +6,27 @@ import { useContext, useEffect, useRef, useState } from "react";
 import "./Chat.css";
 import axios from "axios";
 import { io } from "socket.io-client";
+import { useParams } from 'react-router-dom';
 
 
 const Chat = () => {
+  const { conversationID } = useParams();
+  const [currentChat, setCurrentChat] = useState("");
   const [conversations, setConversations] = useState([]);
   const [currentUser, setCurrentUser] = useState("");
-  const [currentChat, setCurrentChat] = useState("");
   const socket = useRef();
   const [arrivalMessage, setArrivalMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const scrollRef = useRef();
+  useEffect(() => {
+    if (conversationID) {
+      const currentConversation = conversations.find((c) => c._id === conversationID);
+      if (currentConversation) {
+        setCurrentChat(currentConversation);
+      }
+    }
+  }, [conversationID, conversations]);
 
   useEffect(() => {
     socket.current =io("ws://localhost:8900");
@@ -73,6 +83,8 @@ const Chat = () => {
     }
   }, [currentUser]);
 
+
+
   useEffect(() => {
     const getMessages = async () => {
       try {
@@ -119,6 +131,7 @@ const Chat = () => {
 
   return (
     <>
+  
       <TopBar />
       <div className="messenger">
         <div className="chatMenu">

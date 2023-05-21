@@ -3,6 +3,7 @@ import Footer from "../Footer";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Transition } from "@headlessui/react";
+
 import {
   FaEye,
   FaComment,
@@ -25,6 +26,9 @@ const MyJobs = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const [thisProposal, setThisProposal] = useState({});
+
+  
+
 
   const handleDecline = async (proposalId) => {
     const data = {
@@ -109,7 +113,63 @@ const MyJobs = () => {
     }
   };
 
-  const handleOpenChat = () => {};
+  const handleOpenChat = async ({ user_email, receiver_email }) => {
+    setIsLoading(true);
+  
+    try {
+      // Get the user ID for the sender
+      const res = await axios.get("http://localhost:8080/api/getuser/email", {
+        params: {
+          user_email: user_email,
+        },
+      });
+  
+      const userID = res.data.userId;
+      console.log(res);
+  
+      // Get the user ID for the receiver
+      const res1 = await axios.get("http://localhost:8080/api/getuser/email", {
+        params: {
+          user_email: receiver_email,
+        },
+      });
+  
+      const receiverID = res1.data.userId;
+      console.log(res1);
+  
+      // Check if a conversation already exists between sender and receiver
+      const conversationRes = await axios.get("http://localhost:8080/api/chat", {
+        params: {
+          senderId: userID,
+          receiverId: receiverID,
+        },
+      });
+  
+      let conversationID;
+      if (conversationRes.data.length > 0) {
+        // Conversation already exists, retrieve the conversation ID
+        conversationID = conversationRes.data[0]._id;
+        console.log("Conversation already exists. Conversation ID:", conversationID);
+      } else {
+        // Create a new conversation
+        const data = {
+          senderId: userID,
+          receiverId: receiverID,
+        };
+  
+        const url = "http://localhost:8080/api/chat";
+        const response = await axios.post(url, data);
+        conversationID = response.data._id;
+        console.log("New conversation created. Conversation ID:", conversationID);
+      }
+      window.location.href = `http://localhost:3000/chat/${conversationID}`;
+      
+   } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const handleDeleteJob = async (jobId) => {
     try {
@@ -304,7 +364,12 @@ const MyJobs = () => {
                                   )}
 
                                   <button
-                                    onClick={() => handleOpenChat()}
+                                    onClick={() => handleOpenChat(
+                                      {
+                                        user_email: proposal.senderEmail,
+                                        receiver_email: proposal.receiverEmail,
+                                      }
+                                    )}
                                     className="mx-1 flex items-center justify-center px-4 py-2 text-white bg-cyan-600 rounded-lg hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
                                   >
                                     <FaComment className="mr-2" />
