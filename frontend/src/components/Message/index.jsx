@@ -5,10 +5,10 @@ import "./Message.css";
 
 const Message = ({message,own}) => { {
   return (
-    <div className={own ? "message own" : "message"}>
+    <div className={own ? "message own" : "message pl-3"}>
       <div className="messageTop"></div>
-      <p className="messageText">{message.text}</p>
-      <div className="messageBottom">{message.createdAt}</div>
+      <p className="messageText ">{message.text}</p>
+      <div className="messageBottom ">{message.createdAt}</div>
     </div>
   );
 };

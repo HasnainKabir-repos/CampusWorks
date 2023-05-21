@@ -6,17 +6,28 @@ import { useContext, useEffect, useRef, useState } from "react";
 import "./Chat.css";
 import axios from "axios";
 import { io } from "socket.io-client";
+import { useParams } from 'react-router-dom';
+import Footer from '../Footer';
 
 
 const Chat = () => {
+  const { conversationID } = useParams();
+  const [currentChat, setCurrentChat] = useState("");
   const [conversations, setConversations] = useState([]);
   const [currentUser, setCurrentUser] = useState("");
-  const [currentChat, setCurrentChat] = useState("");
   const socket = useRef();
   const [arrivalMessage, setArrivalMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const scrollRef = useRef();
+  useEffect(() => {
+    if (conversationID) {
+      const currentConversation = conversations.find((c) => c._id === conversationID);
+      if (currentConversation) {
+        setCurrentChat(currentConversation);
+      }
+    }
+  }, [conversationID, conversations]);
 
   useEffect(() => {
     socket.current =io("ws://localhost:8900");
@@ -73,6 +84,8 @@ const Chat = () => {
     }
   }, [currentUser]);
 
+
+
   useEffect(() => {
     const getMessages = async () => {
       try {
@@ -119,47 +132,69 @@ const Chat = () => {
 
   return (
     <>
+  
       <TopBar />
-      <div className="messenger">
-        <div className="chatMenu">
-        <div className="chatMenuWrapper">
-        <input placeholder="Search for friends" className="chatMenuInput" />
-        {conversations.map((c) => (
-              <div onClick={() => setCurrentChat(c)}>
-                <Conversation conversation={c} currentUser={currentUser} />
-                </div>
-            ))}
-            </div>
-        </div>
-        <div className="chatBox">
-        <div className="chatBoxWrapper">
-          {currentChat?
-          <>
-        <div className="chatBoxTop ">
-        {messages.map((m) => (
-                    <div ref={scrollRef}>
-                      <Message message={m} own={m.senderId === currentUser} />
-                    </div>
+      <div className="messenger mt-20 ">
+
+        <div className='flex flex-row w-full'>
+
+
+          <div className='flex w-1/4'>
+
+          
+              <div className="chatMenu w-full h-screen  bg-gray-200">
+              <div className="chatMenuWrapper ">
+              <div className='pl-3 py-1 pt-3 h-14 bg-gradient-to-r from-emerald-700 to-cyan-600 '>
+                <h1 className='text-white font-bold text-lg'>Open Conversation</h1>
+              </div>
+              {conversations.map((c) => (
+                    <div onClick={() => setCurrentChat(c)}>
+                      <Conversation conversation={c} currentUser={currentUser} />
+                      </div>
                   ))}
+                  </div>
+              </div>
+          </div>
+
+
+          <div className='flex w-2/4'>     
+          <div className="chatBox w-full">
+          <div className="chatBoxWrapper max-h-screen">
+            {currentChat?
+            <>
+            <div className=' pl-3 pt-3 py-1 bg-emerald-600 '>
+              <h1 className='text-white font-bold text-lg'>Mamun</h1>
+            </div>
+          <div className="chatBoxTop overflow-auto ">
+          {messages.map((m) => (
+                      <div ref={scrollRef}>
+                        <Message message={m} own={m.senderId === currentUser} />
+                      </div>
+                    ))}
+          </div>
+          <div className="chatBoxBottom">
+          <textarea
+                      className="chatMessageInput bg-gray-200 p-3 h-20 m-3 w-80 border-2 border-emerald-700 rounded-lg focus:ring-2 focus:ring-cyan-600"
+                      placeholder="write something..."
+                      onChange={(e) => setNewMessage(e.target.value)}
+                      value={newMessage}
+                    ></textarea>
+                    <button className="chatSubmitButton" onClick={handleSubmit}>
+                      Send
+                    </button>
+          </div></> :(<span className='noConversationText'>Open a conversation to start a chat.</span>)}
+        
+          </div>
+          </div>
         </div>
-        <div className="chatBoxBottom">
-        <textarea
-                    className="chatMessageInput"
-                    placeholder="write something..."
-                    onChange={(e) => setNewMessage(e.target.value)}
-                    value={newMessage}
-                  ></textarea>
-                  <button className="chatSubmitButton" onClick={handleSubmit}>
-                    Send
-                  </button>
-        </div></> :(<span className='noConversationText'>Open a conversation to start a chat.</span>)}
-       
+        
+            <div className='flex w-1/4'> </div>
+
+
+        </div> 
         </div>
-        </div>
-        <div className="chatOnline">
-        <div className="chatOnlineWrapper"></div>
-        </div>
-        </div>
+
+        <Footer />
     </>
   );
 }
