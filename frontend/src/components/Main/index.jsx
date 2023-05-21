@@ -4,7 +4,7 @@ import avatar from "../../assets/avatar.png";
 import job_search from "../../assets/job_search.png";
 import write from "../../assets/write.png";
 import { Link } from "react-router-dom";
-import { FaPlus } from "react-icons/fa";
+import { FaEnvelope, FaInbox, FaPlus } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { FaUserFriends, FaBriefcase, FaSearch } from "react-icons/fa";
@@ -167,8 +167,23 @@ const Main = () => {
                 <h2 class="mb-4 text-lg font-medium text-white">Inbox</h2>
               </div>
 
-              <div class="flex flex-wrap px-20 py-20">
-                Inbox will be added here
+              <div class="flex flex-wrap ">
+                  <div className="bg-white p-6 max-w-sm mx-auto flex items-center justify-center">
+                    <div className="flex flex-col items-center justify-center ">
+                      <div className="mb-2"><FaEnvelope size="42" color="green" /></div>
+                      <div> 
+                        <div className="flex justify-end">
+                    <Link to="/inbox">
+                      <button className="bg-gradient-to-r from-green-500 to-cyan-500 p-8 text-black hover:bg-green-600  font-semibold py-2 px-4 rounded">
+                        Click here to view your inbox
+                      </button>
+                    </Link>
+                  </div>
+                  </div>
+                    </div>
+                  
+                 
+                </div>
               </div>
             </div>
           </div>

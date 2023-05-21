@@ -22,18 +22,12 @@ const Profile = () => {
       headers: { Authorization: `Bearer ${token}` },
     };
 
-    axios
-      .get("http://localhost:8080/api/user_info", config)
-      .then((response) => {
-        setUserInfo(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    axios
-      .get("http://localhost:8080/api/userProfile", config)
-      .then((response) => {
-        //setUserProfile(response.data);
+    const fetchUserProfile = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8080/api/userProfile",
+          config
+        );
         if (response.data.Bio) {
           setIsBio(true);
         }
@@ -53,10 +47,21 @@ const Profile = () => {
           setIsAchievements(true);
         }
         setUserProfile(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    axios
+      .get("http://localhost:8080/api/user_info", config)
+      .then((response) => {
+        setUserInfo(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
+
+    fetchUserProfile();
   }, []);
 
   return (
@@ -72,20 +77,20 @@ const Profile = () => {
         </div>
 
         <div className="rounded-lg overflow-hidden mt-4">
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden p-5 flex flex-col items-center mb-3">
-  {userProfile.photo ? (
-      <img
-        src={`http://localhost:8080/api/images/${userProfile.photo}`}
-        alt="avatar"
-        className="w-32 h-32 rounded-full mb-5"
-      />
-  ) : (
-    <img
-      src={avatar}// Replace with the path to your default avatar image
-      alt="default-avatar"
-      className="w-32 h-32 rounded-full mb-5"
-    />
-  )}
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden p-5 flex flex-col items-center mb-3">
+            {userProfile.photo ? (
+              <img
+                src={`http://localhost:8080/api/images/${userProfile.photo}`}
+                alt="avatar"
+                className="w-32 h-32 rounded-full mb-5"
+              />
+            ) : (
+              <img
+                src={avatar}
+                alt="default-avatar"
+                className="w-32 h-32 rounded-full mb-5"
+              />
+            )}
 
             <h1 className="text-2xl font-medium mb-2">{userInfo.name}</h1>
           </div>

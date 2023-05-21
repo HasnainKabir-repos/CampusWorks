@@ -34,31 +34,37 @@ const Internship = () => {
   }, []);
 
   const formatDate = (lastDateToApply) => {
-    const currentDate = new Date();
-    const options = {
-      day: "2-digit",
-      month: "2-digit",
-      year: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-    };
-
-    const dateDifference = Math.floor(
-      (new Date(lastDateToApply) - currentDate) / (1000 * 60 * 60 * 24)
-    );
-    const daysRemaining =
-      dateDifference > 0
-        ? `Time Remaining | ${dateDifference} Days`
-        : "Last Date Passed";
-
-    return {
-      formattedDate: `${new Date(lastDateToApply).toLocaleString(
-        "en-GB",
-        options
-      )}`,
-      daysRemaining,
-    };
+  const currentDate = new Date();
+  const options = {
+    day: "2-digit",
+    month: "2-digit",
+    year: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
   };
+
+  const dateDifference = Math.floor(
+    (new Date(lastDateToApply) - currentDate) / (1000 * 60 * 60 * 24)
+  );
+  const hoursDifference = Math.floor(
+    (new Date(lastDateToApply) - currentDate) / (1000 * 60 * 60)
+  );
+
+  let daysRemaining;
+  if (hoursDifference <= 0) {
+    daysRemaining = "Last Date Passed";
+  } else {
+    const remainingDays = Math.floor(hoursDifference / 24);
+    const remainingHours = hoursDifference % 24;
+    daysRemaining = `Time Remaining | ${remainingDays} Day(s) ${remainingHours} Hour(s)`;
+  }
+
+  return {
+    formattedDate: `${new Date(lastDateToApply).toLocaleString("en-GB", options)}`,
+    daysRemaining,
+  };
+};
+
 
   const formatDate1 = (date) => {
     const options = {
