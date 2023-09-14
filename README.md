@@ -1,9 +1,9 @@
 # 🔥 **CampusWorks - an on campus job and internship platform**
 #       *Developed in MERN stack*
-#   *Team Members*
-#  *A Z Hasnain Kabir*
-#  *Mamunur Rahman*
-#  *Mukit Mahdin*
+##   *Team Members*
+##  *A Z Hasnain Kabir*
+##  *Mamunur Rahman*
+##  *Mukit Mahdin*
 
 <p align="center">
   <div>
