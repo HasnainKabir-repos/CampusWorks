@@ -103,6 +103,6 @@ Online discussion platform related to jobs and internships. <br>
 
 <img src="./frontend/src/assets/forum.png"/>
 
-# *iew Jobs posted by user*
+# *View Jobs posted by user*
 
 <img src="./frontend/src/assets/my_jobs.png"/>
