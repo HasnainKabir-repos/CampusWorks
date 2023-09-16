@@ -73,4 +73,36 @@ Messaging and collaboration tools:
 Online discussion platform related to jobs and internships.
 
 
+# **Screenshots**
 
+# *Landing Page*
+
+<img src="./frontend/src/assets/landingpage.png"/>
+
+# *Jobs*
+
+<img src="./frontend/src/assets/job.png"/>
+
+# *Job search*
+
+<img src="./frontend/src/assets/searching.png"/>
+
+# *Posting Jobs*
+
+<img src="./frontend/src/assets/post.png"/>
+
+# *Profile*
+
+<img src="./frontend/src/assets/profile.png"/>
+
+# *Send Proposal*
+
+<img src="./frontend/src/assets/proposal.png"/>
+
+# *Forum*
+
+<img src="./frontend/src/assets/forum.png"/>
+
+# *iew Jobs posted by user*
+
+<img src="./frontend/src/assets/my_jobs.png"/>
