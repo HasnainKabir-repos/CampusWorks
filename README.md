@@ -48,29 +48,29 @@
 ## 📝 **Features**
 
 # *Features for IUTIAN Freelancers :* 
-Advanced search capabilities:
-Job matching: 
-Profile management: From a job seeker’s perspective
-Proposal management: Submit
-Payment and invoicing: Receiving payment
-Messaging and collaboration tools: 
+Advanced search capabilities:<br>
+Job matching: <br>
+Profile management: From a job seeker’s perspective<br>
+Proposal management: Submit Proposal <br>
+Payment and invoicing: Receiving payment <br>
+Messaging and collaboration tools: <br>
 
 # *Features for Clients :* 
-Profile management: Client profile
-Reviews and ratings: Provide reviews
-Review proposals:
-Messaging and collaboration tools:
-Skill-based freelance searching based on keywords
+Profile management: Client profile <br>
+Reviews and ratings: Provide reviews <br>
+Review proposals: <br>
+Messaging and collaboration tools: <br> 
+Skill-based freelance searching based on keywords <br>
 
 # *Features in Internship Portal :* 
-Posting and Searching Job
-Job matching: 
-Profile management: From a job seeker’s perspective
-Proposal management: Submit
-Messaging and collaboration tools: 
+Posting and Searching Job <br>
+Job matching: <br>
+Profile management: From a job seeker’s perspective <br>
+Proposal management: Submit Proposal <br>
+Messaging and collaboration tools: <br>
 
 # *Features in Forum :* 
-Online discussion platform related to jobs and internships.
+Online discussion platform related to jobs and internships. <br>
 
 
 # **Screenshots**
